@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src",
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -16,7 +15,12 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react",
-    "paths": {}
+    "baseUrl": "./src",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@store/*": ["store/*"],
+      "@types/*": ["types/*"]
+    }
   },
   "include": ["src", "src/react-app-env.d.ts"]
 }

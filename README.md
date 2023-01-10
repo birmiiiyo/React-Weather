@@ -1,0 +1,2 @@
+STORMGLASS per hour
+OPENWEATHER per day
