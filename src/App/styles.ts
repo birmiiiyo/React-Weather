@@ -14,6 +14,7 @@ ${CENTER}
 `;
 
 export const Container = styled.div<IContainerProps>`
+position:relative;
 width:90vw;
 height:80vh;
 background-image: url(${({image}) => image});

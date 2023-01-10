@@ -1,12 +1,13 @@
+import { Form } from '@components/Input';
 import React, { useEffect, useState } from 'react';
-import { Information } from '../comp/Information';
-import { Login } from '../comp/Login';
-import { Weather } from '../comp/Weather';
+import { Information } from '@components/Information';
+import { Login } from '@components/Login';
+import { Weather } from '@components/Weather';
 
 import {Background, Container} from './styles'
+
 const bgImg = 'https://krot.info/uploads/posts/2021-12/thumbs/1638363519_2-krot-info-p-solnechnii-peizazh-krasivie-foto-2.jpg'
 const Img = "https://funart.pro/uploads/posts/2021-03/1617081925_43-p-oboi-solnechnii-peizazh-43.jpg"
-
 
 function App() {
   const [lat,setLag] = useState(0)
@@ -20,6 +21,7 @@ function App() {
   return (
     <Background bodyImage={bgImg}>
       <Container image={Img}>
+        <Form/>
         <Information/>
         <Weather/>
         <p>{lat}---{lng}</p>
