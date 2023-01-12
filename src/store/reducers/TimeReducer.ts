@@ -1,22 +1,20 @@
-interface TimeState {
-    abbreviation: string;
-    datetime: Date | null,
-    timezone:string,
-}
+import { ETimeActionType, ITimeState,TTimeType } from "@store/models/Time.model";
 
-const initialState: TimeState = {
-  abbreviation: '',
-  datetime: null,
-  timezone:'',
+const initialState: ITimeState = {
+    countryName:'',
+    zoneName:'',
+    abbreviation:'',
+    formatted:'',
+    timestamp:0,
 };
 
 const TimeReducer = (
   state = initialState,
-  action: any,
-) => {
+  action: TTimeType,
+): ITimeState => {
   switch (action.type) {
-    case 'GET_TIME':
-      return { ...action};
+    case ETimeActionType.SET_CURRENT_TIME:
+        return {...action.payload}
     default:
       return state;
   }

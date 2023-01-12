@@ -14,11 +14,11 @@ export interface City {
         population: number;
         timezone: number;
     }
-    export interface Coord {
+interface Coord {
         lon: number;
         lat: number;
     }
-export interface Temp {
+interface Temp {
         day: number;
         min: number;
         max: number;
@@ -26,13 +26,13 @@ export interface Temp {
         eve: number;
         morn: number;
     }
-export interface FeelsLike {
+interface FeelsLike {
         day: number;
         night: number;
         eve: number;
         morn: number;
     }
-export interface Weather {
+interface Weather {
         id: number;
         main: string;
         description: string;

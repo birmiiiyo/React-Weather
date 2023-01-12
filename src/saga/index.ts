@@ -1,7 +1,8 @@
-import { all, call } from 'redux-saga/effects'
+import { all } from 'redux-saga/effects';
+import { watcherCurrentTime } from './CurrentTime';
+import { watcherDailyWeather } from './DailyWeather';
 
 export function* rootSaga() {
-  yield all([])
+  console.log('start sagas');
+  yield all([watcherDailyWeather(), watcherCurrentTime()])
 }
-
-// call()

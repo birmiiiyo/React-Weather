@@ -1,10 +1,11 @@
 import { combineReducers } from 'redux';
 
+import Location from './LocationReducer'
+import DailyWeaher from './DailyWeaherReducer'
 import Time from './TimeReducer'
 
-
 export const rootReducer = combineReducers({
-    Time,
+    Location,
+    DailyWeaher,
+    Time
 });
-
-export type RootState = ReturnType<typeof rootReducer>;

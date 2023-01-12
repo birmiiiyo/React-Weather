@@ -9,7 +9,7 @@ flex-direction:column;
 `;
 
 export const Input = styled.input`
-
+color:black
 `;
 
 export const Label = styled.label`
