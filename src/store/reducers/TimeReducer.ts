@@ -4,8 +4,8 @@ const initialState: ITimeState = {
     countryName:'',
     zoneName:'',
     abbreviation:'',
-    formatted:'',
-    timestamp:0,
+    time: new Date(),
+
 };
 
 const TimeReducer = (
@@ -15,6 +15,8 @@ const TimeReducer = (
   switch (action.type) {
     case ETimeActionType.SET_CURRENT_TIME:
         return {...action.payload}
+    // case ETimeActionType.INCREASE_MINUTES:
+    //     return{...state, time:state.time + 60000}
     default:
       return state;
   }

@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
+import { getDailyWeather } from "@store/actions/DailyWeatherActions";
 import { addLocation } from "@store/actions/LocationActions";
+import { getCurrentTime } from "@store/actions/TimeActions";
 import { ILocation } from "@types/OpenWeather.location";
 
 import React, { Dispatch, FC, SetStateAction} from 'react'
@@ -19,9 +21,9 @@ export const Dropdown:FC<DropdownProps> = ({ cities,dropdown,setDropdown }) => {
   const clickHandler = (cities: ILocation) => {
     const {lat,lon} = cities
     dispatch(addLocation({lat,lon}))
+    dispatch(getDailyWeather())
     setDropdown(false);
   };
-  
   return (
             <ul>
               {dropdown && cities?.length === 0

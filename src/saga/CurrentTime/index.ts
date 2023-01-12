@@ -9,10 +9,10 @@ import { ETimeActionType } from '@store/models/Time.model';
 export function* workerCurrentTime() {
     const {lat, lon} = yield select((state: RootState) => state.Location)
     const data: ITime= yield call(getCurrentTimeFromAPI, {lat, lon})
+    const time = new Date(data.formatted)
     yield put(setCurrentTime({abbreviation: data.abbreviation,
     countryName: data.countryName,
-    formatted: data.formatted,
-    timestamp: data.timestamp,
+    time: time.getTime(),
     zoneName: data.zoneName}))
 }
 
