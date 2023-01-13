@@ -3,10 +3,12 @@ import { RootState } from '@store/index';
 import { ITime } from '@types/TimeZoneDB';
 import { select, takeEvery, put, call } from 'redux-saga/effects';
 import { setCurrentTime } from '@store/actions/TimeActions';
+import {errorAtTime} from '@store/actions/ErrorActions'
 import { ETimeActionType } from '@store/models/Time.model';
 
 
 export function* workerCurrentTime() {
+try {
     const {lat, lon} = yield select((state: RootState) => state.Location)
     const data: ITime= yield call(getCurrentTimeFromAPI, {lat, lon})
     const time = new Date(data.formatted)
@@ -14,6 +16,9 @@ export function* workerCurrentTime() {
     countryName: data.countryName,
     time: time.getTime(),
     zoneName: data.zoneName}))
+} catch (error) {
+    yield put(errorAtTime('Ошибка при запросе данных о времени'))
+}
 }
 
 export function* watcherCurrentTime() {
