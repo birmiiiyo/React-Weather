@@ -22,6 +22,7 @@ export const Dropdown:FC<DropdownProps> = ({ cities,dropdown,setDropdown }) => {
     const {lat,lon} = cities
     dispatch(addLocation({lat,lon}))
     dispatch(getDailyWeather())
+    dispatch(getCurrentTime())
     setDropdown(false);
   };
   return (

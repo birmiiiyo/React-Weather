@@ -10,14 +10,13 @@ import { useAppDispatch } from 'hooks/useAppDispatch';
 import { addLocation } from '@store/actions/LocationActions';
 import { getDailyWeather } from '@store/actions/DailyWeatherActions';
 import { getCurrentTime } from '@store/actions/TimeActions';
-import { useAppSelector } from 'hooks/useAppSelector';
 
 const bgImg = 'https://krot.info/uploads/posts/2021-12/thumbs/1638363519_2-krot-info-p-solnechnii-peizazh-krasivie-foto-2.jpg'
 const Img = "https://funart.pro/uploads/posts/2021-03/1617081925_43-p-oboi-solnechnii-peizazh-43.jpg"
 
 function App() {
   const dispatch = useAppDispatch()
-  const {lat,lon} = useAppSelector(state => state.Location)
+
   useEffect(()=> {
     navigator.geolocation.getCurrentPosition(
       position => {
@@ -34,6 +33,7 @@ function App() {
       }
 })
   },[])
+  
   return (
     <Background bodyImage={bgImg}>
       <Container image={Img}>
