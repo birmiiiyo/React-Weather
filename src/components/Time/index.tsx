@@ -1,3 +1,5 @@
+import { getCurrentTime } from '@store/actions/TimeActions'
+import { useAppDispatch } from 'hooks/useAppDispatch'
 import { useAppSelector } from 'hooks/useAppSelector'
 import React from 'react'
 import { useState, useEffect } from 'react'
@@ -5,27 +7,24 @@ import { getTime } from 'utils/Clock'
 import { Wrapper, TimeItem, Time, DayInfo } from './styles'
 
 export const Clock = () => {
-  const {countryName,zoneName}= useAppSelector(state => state.Time)
-  const [currentTime, setCurrentTime] = useState(new Date())
-  const {hours,minutes,period, date,seconds} = getTime(currentTime)
-
+  const dispatch = useAppDispatch()
+  const {time} = useAppSelector (state => state.Time)
+  // const {hours, minutes} = getTime(time)
   useEffect(() => {
     const timerId = setInterval(() => {
-      setCurrentTime(new Date())
-    }, 1000)
+      dispatch(getCurrentTime())
+    }, 1000*60)
 
     return function clear() {
       clearInterval(timerId)
     }
-  }, [setCurrentTime])
-
+  }, [dispatch, time])
   return (
     <Wrapper>
       <TimeItem>
-        <Time>{`${hours}:${minutes}:${seconds}  ${period}`}</Time>
-        <h1>{countryName + ' '+ zoneName}</h1>
+        {time.toString().slice(0,-3)}
       </TimeItem>
-      <DayInfo>{date}</DayInfo>
+        
     </Wrapper>
   )
 }

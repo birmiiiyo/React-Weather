@@ -1,10 +1,9 @@
-import React from 'react'
-import {Background} from './styles'
+import React, { useState } from 'react'
+import {Background,LoginButton} from './styles'
 
 export const Login = () => {
+    const [isLogin, setIsLogin] = useState<boolean>(false)
     return (<Background>
-        <button>login</button>
-        <button>login</button>
-        <button>login</button>
+        <LoginButton onClick={()=>setIsLogin(!isLogin)}>{isLogin ? 'выйти' : 'войти'}</LoginButton>
     </Background>)
 }

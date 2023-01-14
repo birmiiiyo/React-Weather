@@ -2,7 +2,7 @@ export interface ITimeState {
     countryName:string
     zoneName:string
     abbreviation:string
-    time: number
+    time: Date
 }
 
 export enum ETimeActionType {

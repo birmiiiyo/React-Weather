@@ -2,6 +2,17 @@ import styled from 'styled-components';
 import {CENTER} from './../styles/themes'
 import {IBodyProps,IContainerProps} from './types'
 
+export const Center = styled.div`
+${CENTER}
+`;
+
+export const InfoContainer = styled.div`
+display:flex;
+justify-content:space-between;
+margin:30px;
+`;
+
+
 export const Background = styled.div<IBodyProps>`
 width:100%;
 height:100vh;

@@ -1,4 +1,4 @@
-import { errorAtDailyWeather } from './../../store/actions/ErrorActions';
+import { errorAtDailyWeather } from '@store/actions/ErrorActions';
 import { RootState } from '@store/index';
 import { IOpenWeather } from '@types/OpenWeather.weather';
 import { select, takeEvery, put, call } from 'redux-saga/effects';

@@ -1,23 +1,25 @@
-import { Form } from '@components/Input';
+import { Search } from '@components/Search';
 import React, { useEffect } from 'react';
 import { Information } from '@components/Information';
 import { Login } from '@components/Login';
-import { Weather } from '@components/Weather';
 
-import {Background, Container} from './styles'
+import {Background, Container, Center,
+  InfoContainer } from './styles'
+
 import { Clock } from '@components/Time';
 import { useAppDispatch } from 'hooks/useAppDispatch';
 import { addLocation } from '@store/actions/LocationActions';
 import { getDailyWeather } from '@store/actions/DailyWeatherActions';
 import { getCurrentTime } from '@store/actions/TimeActions';
 import { getHourlyWeatherAPI } from 'API/getHourlyWeather';
+import { useAppSelector } from 'hooks/useAppSelector';
 
 const bgImg = 'https://krot.info/uploads/posts/2021-12/thumbs/1638363519_2-krot-info-p-solnechnii-peizazh-krasivie-foto-2.jpg'
 const Img = "https://funart.pro/uploads/posts/2021-03/1617081925_43-p-oboi-solnechnii-peizazh-43.jpg"
 
 function App() {
   const dispatch = useAppDispatch()
-
+  const {countryName,zoneName} = useAppSelector(state => state.Time)
   useEffect(()=> {
     navigator.geolocation.getCurrentPosition(
       position => {
@@ -34,17 +36,21 @@ function App() {
       }
 })
   },[])
+
   return (
     <Background bodyImage={bgImg}>
       <Container image={Img}>
-        <Form/>
-        <button onClick={()=> getHourlyWeatherAPI({lat:27,lon:53})}>hourly weather</button>
-        <Clock/>
+        <Center>
+          <Search/>
+        </Center>
+        {/* <button onClick={()=> getHourlyWeatherAPI({lat:27,lon:53})}>hourly weather</button> */}
+        <InfoContainer>
+          <Clock/>
+          <h1>Страна: {countryName}, часовой пояс: {zoneName}</h1>
+        </InfoContainer>
         <Information/>
-        <Weather/>
       </Container>
       <Login/>
-      
     </Background>
   );
 }

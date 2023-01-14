@@ -8,32 +8,34 @@ import { ILocation } from "@types/OpenWeather.location";
 import React, { Dispatch, FC, SetStateAction} from 'react'
 import { useDispatch } from "react-redux";
 
-import {Background, Container} from './styles'
+import {Item,List} from './styles'
 
 interface DropdownProps {
+  search: string
     cities: Array<ILocation>;
     dropdown:boolean;
     setDropdown: Dispatch<SetStateAction<boolean>>;
 }
 
-export const Dropdown:FC<DropdownProps> = ({ cities,dropdown,setDropdown }) => {
+export const Dropdown:FC<DropdownProps> = ({search, cities,dropdown,setDropdown }) => {
   const dispatch = useDispatch()
-  const clickHandler = (cities: ILocation) => {
-    const {lat,lon} = cities
+  const clickHandler = (city: ILocation) => {
+    const {lat,lon} = city
     dispatch(addLocation({lat,lon}))
     dispatch(getDailyWeather())
     dispatch(getCurrentTime())
     setDropdown(false);
   };
   return (
-            <ul>
-              {dropdown && cities?.length === 0
-                ? 'Нет элементов'
-                : cities?.map(city => (
-                    <li key={city.lat+city.lon} onClick={()=>clickHandler(city)}>
-                      {city.name}+{city.state}+{city.country}
-                    </li>
-                  ))}
-            </ul>
+    <>{dropdown && (
+      <List>
+        {(!cities.length && search.length > 2)  ? <Item>Not found</Item> :
+        (cities?.map(city => (
+          <Item key={city.lat+city.lon} onClick={()=>clickHandler(city)}>
+            {city.name} {city.state} {city.country}
+          </Item>
+        )))}
+      </List>
+    )}</>         
   )
 }

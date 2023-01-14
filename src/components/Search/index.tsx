@@ -11,8 +11,7 @@ import { useDispatch } from "react-redux";
 
 import {Container,Input,Label} from './styles'
 
-export const Form = () => {
-  const dispatch = useDispatch()
+export const Search = () => {
   const [search, setSearch] = useState<string>('');
   const [data, setData] = useState<Array<ILocation>>([])
   const [dropdown, setDropdown] = useState<boolean>(true);
@@ -23,7 +22,7 @@ export const Form = () => {
     setDropdown((debounced.length > 2) && (data?.length! > 0));
     axios.get(`${process.env.OPEN_WEATHER_CITY_PATH}?q=${debounced}&limit=10&appid=${process.env.OPEN_WEATHER_API_key}`)
     .then(responce => setData(responce.data))
-  }, [debounced]);
+  }, [data?.length, debounced]);
   
   return (
     <Container>
@@ -32,7 +31,7 @@ export const Form = () => {
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search for city..."
           value={search}/>
-          <Dropdown cities={data} dropdown={dropdown} setDropdown={setDropdown}/>
+          <Dropdown search={search} cities={data} dropdown={dropdown} setDropdown={setDropdown}/>
     </Container>
   )
 }

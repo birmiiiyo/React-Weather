@@ -1,8 +1,7 @@
 import { StormGlass } from '@types/StormGlass'
 import { IPositionProps } from '@types/LatLonProps';
 import axios from 'axios'
-const time = new Date()
-time.toUTCString
+
 export const getHourlyWeatherAPI = async ({lat,lon}: IPositionProps)=>{
      const request = await axios<StormGlass>({
         url: `${process.env.STORMGLASS_PATH}`,
