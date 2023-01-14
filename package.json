@@ -7,7 +7,8 @@
     "build": "webpack --mode production",
     "start": "webpack serve --mode development",
     "lint": "eslint src/**/* --ext .ts,.tsx --fix",
-    "prettier": "prettier --write ."
+    "prettier": "prettier --write .",
+    "prepare": "husky install"
   },
   "keywords": [],
   "author": "",
@@ -32,6 +33,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
+    "husky": "^8.0.3",
     "prettier": "2.8.0",
     "redux-devtools-extension": "^2.13.9",
     "ts-loader": "^9.4.1",
