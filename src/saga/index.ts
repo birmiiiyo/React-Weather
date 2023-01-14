@@ -1,4 +1,5 @@
-import { all } from 'redux-saga/effects';
+import { RootState } from './../store/index';
+import { all, select } from 'redux-saga/effects';
 import { watcherCurrentTime } from './CurrentTime';
 import { watcherDailyWeather } from './DailyWeather';
 import { watcherHourlyWeather } from './HourlyWeather';

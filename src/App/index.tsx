@@ -11,9 +11,9 @@ import { useAppDispatch } from 'hooks/useAppDispatch';
 import { addLocation } from '@store/actions/LocationActions';
 import { getDailyWeather } from '@store/actions/DailyWeatherActions';
 import { getCurrentTime } from '@store/actions/TimeActions';
-import { getHourlyWeatherAPI } from 'API/getHourlyWeather';
 import { useAppSelector } from 'hooks/useAppSelector';
 import { getHourlyWeather } from '@store/actions/HourlyWeatherActions';
+import { Calendar } from '@components/Calendar';
 
 const bgImg = 'https://krot.info/uploads/posts/2021-12/thumbs/1638363519_2-krot-info-p-solnechnii-peizazh-krasivie-foto-2.jpg'
 const Img = "https://funart.pro/uploads/posts/2021-03/1617081925_43-p-oboi-solnechnii-peizazh-43.jpg"
@@ -38,7 +38,7 @@ function App() {
         dispatch(getHourlyWeather())
       }
 })
-  },[])
+  },[dispatch])
 
   return (
     <Background bodyImage={bgImg}>
@@ -51,6 +51,7 @@ function App() {
           <Clock/>
           <h1>Страна: {countryName}, часовой пояс: {zoneName}</h1>
         </InfoContainer>
+        <Calendar/>
         <Information/>
       </Container>
       <Login/>

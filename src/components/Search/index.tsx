@@ -2,16 +2,19 @@
 /* eslint-disable @typescript-eslint/no-non-null-asserted-optional-chain */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { Dropdown } from "@components/Dropdown";
+import { getDailyWeather } from "@store/actions/DailyWeatherActions";
 import { addLocation } from "@store/actions/LocationActions";
+import { getCurrentTime } from "@store/actions/TimeActions";
 import { ILocation } from "@types/OpenWeather.location";
 import axios from 'axios';
+import { useAppDispatch } from "hooks/useAppDispatch";
 import { useDebounce } from 'hooks/useDebounce';
 import React, { useEffect, useRef, useState } from 'react'
-import { useDispatch } from "react-redux";
 
 import {Container,Input,Label} from './styles'
 
 export const Search = () => {
+  const dispatch = useAppDispatch()
   const [search, setSearch] = useState<string>('');
   const [data, setData] = useState<Array<ILocation>>([])
   const [dropdown, setDropdown] = useState<boolean>(true);
@@ -23,7 +26,14 @@ export const Search = () => {
     axios.get(`${process.env.OPEN_WEATHER_CITY_PATH}?q=${debounced}&limit=10&appid=${process.env.OPEN_WEATHER_API_key}`)
     .then(responce => setData(responce.data))
   }, [data?.length, debounced]);
-  
+
+  const clickHandler = (lat:number, lon: number) => {
+    dispatch(addLocation({lat,lon}))
+    dispatch(getDailyWeather())
+    dispatch(getCurrentTime())
+    setDropdown(false);
+    setSearch('')
+  };
   return (
     <Container>
         <Label>Введите город:</Label>
@@ -31,7 +41,8 @@ export const Search = () => {
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search for city..."
           value={search}/>
-          <Dropdown search={search} cities={data} dropdown={dropdown} setDropdown={setDropdown}/>
+          <Dropdown search={search} cities={data} dropdown={dropdown} 
+          clickHandler={clickHandler}/>
     </Container>
   )
 }

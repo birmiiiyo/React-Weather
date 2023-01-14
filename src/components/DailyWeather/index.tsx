@@ -1,3 +1,4 @@
+import { days } from "constants/days"
 import { useAppSelector } from "hooks/useAppSelector"
 import React, { useState } from "react"
 
@@ -17,7 +18,7 @@ export const DayliWeather = () => {
         <Button onClick={switchTime}>{time}</Button>
         <List>
             {list?.map(day => <Value key={day.sunrise}>
-                <div>Day: {new Date(day.dt*1000).getDay()}</div>
+                <div>Day: {days[new Date(day.dt*1000).getDay()]}</div>
                 <div>temp at {time}: {time === 'day'? day.temp.day.toFixed(1)
                 : 
                 day.temp.night.toFixed(1)}</div>

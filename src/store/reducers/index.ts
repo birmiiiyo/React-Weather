@@ -5,6 +5,7 @@ import DailyWeaher from './DailyWeaherReducer'
 import Time from './TimeReducer'
 import Error from './ErrorReducer'
 import HourlyWeather from './HourlyWeatherReducer'
+import CalendarReducer from './CalendarReducer';
 
 export const rootReducer = combineReducers({
     Location,
@@ -12,4 +13,5 @@ export const rootReducer = combineReducers({
     Time,
     Error,
     HourlyWeather,
+    CalendarReducer
 });

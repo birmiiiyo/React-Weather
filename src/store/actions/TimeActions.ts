@@ -9,6 +9,3 @@ export const setCurrentTime = (newLocation: ITimeState) => ({
     payload: newLocation
     }
 )
-export const increaseMinutes = () => ({
-    type: ETimeActionType.INCREASE_MINUTES
-})

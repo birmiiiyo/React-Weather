@@ -14,7 +14,9 @@ try {
     yield put(setCurrentTime({abbreviation: data.abbreviation,
     countryName: data.countryName,
     time: data.formatted as unknown as Date,
-    zoneName: data.zoneName}))
+    zoneName: data.zoneName,
+    gmtOffset:data.gmtOffset*1000
+}))
 } catch (error) {
     yield put(errorAtTime('Ошибка при запросе данных о времени'))
 }

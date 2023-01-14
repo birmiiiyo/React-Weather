@@ -1,8 +1,13 @@
 import { StormGlass } from '@types/StormGlass'
-import { IPositionProps } from '@types/LatLonProps';
 import axios from 'axios'
 
-export const getHourlyWeatherAPI = async ({lat,lon}: IPositionProps)=>{
+interface HourlyAPIProps {
+    lat:number,
+    lon:number,
+    date:string
+}
+
+export const getHourlyWeatherAPI = async ({lat,lon, date}: HourlyAPIProps)=>{
      const request = await axios<StormGlass>({
         url: `${process.env.STORMGLASS_PATH}`,
         method: 'get',
@@ -13,8 +18,8 @@ export const getHourlyWeatherAPI = async ({lat,lon}: IPositionProps)=>{
             lat,
             lng: lon,
             params: 'airTemperature,pressure,currentSpeed,cloudCover',
-            start: new Date().getTime(),
-            end: new Date().getTime()+5*60*60*1000
+            start: date,
+            end:new Date(date).getTime()+7*1000*60*60
         }
     })
     console.log(request);

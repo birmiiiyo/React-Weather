@@ -1,9 +1,18 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {Background,LoginButton} from './styles'
+import { apiCalendar } from 'utils/Calendar'
+
 
 export const Login = () => {
-    const [isLogin, setIsLogin] = useState<boolean>(false)
+    const handleItemClick = (name: string):void => {
+        if (name === 'sign-in') {
+          apiCalendar.handleAuthClick()
+        } else if (name === 'sign-out') {
+          apiCalendar.handleSignoutClick();
+        }
+      }
     return (<Background>
-        <LoginButton onClick={()=>setIsLogin(!isLogin)}>{isLogin ? 'выйти' : 'войти'}</LoginButton>
+        <LoginButton onClick={()=>handleItemClick('sign-out')}>sign-out</LoginButton>
+        <LoginButton onClick={()=>handleItemClick('sign-in')}>sign-in</LoginButton>
     </Background>)
 }
