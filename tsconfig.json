@@ -19,7 +19,17 @@
     "paths": {
       "@components/*": ["components/*"],
       "@store/*": ["store/*"],
-      "@types/*": ["types/*"]
+      "@types/*": ["types/*"],
+      "@API/*": ["API/*"],
+      "@App/*": ["App/*"],
+      "@constants/*": ["contants/*"],
+      "@hooks/*": ["hooks/*"],
+      "@saga/*": ["saga/*"],
+      "@reducers/*": ["store/reducers/*"],
+      "@actions/*": ["store/actions/*"],
+      "@models/*": ["store/models/*"],
+      "@styles/*": ["styles/*"],
+      "@utils/*": ["utils/*"]
     }
   },
   "include": ["src", "src/react-app-env.d.ts"]
