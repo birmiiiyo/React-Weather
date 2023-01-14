@@ -4,7 +4,8 @@ export const Container = styled.div`{
     position:absolute;
     bottom: 0;
     background-color: gray;
-    height:250px;
+    height: 300px;
+    width:100%;
 }`
 
 export const Button = styled.button`

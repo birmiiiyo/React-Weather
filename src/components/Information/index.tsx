@@ -5,10 +5,9 @@ import React, { Fragment, useState } from "react"
 
 import {Button, Container } from './styles'
 
-type ActiveWeather = 'daily'|'hourly'
 
 export const Information = () => {
-    const [activeWeather, setActiveWeather] = useState<ActiveWeather>('daily')
+    const [activeWeather, setActiveWeather] = useState<'daily'|'hourly'>('daily')
     const switchWeather = () => {
         if (activeWeather === 'daily'){
             setActiveWeather('hourly')
