@@ -5,7 +5,7 @@ import { Dropdown } from "@components/Dropdown";
 import { getDailyWeather } from "@store/actions/DailyWeatherActions";
 import { addLocation } from "@store/actions/LocationActions";
 import { getCurrentTime } from "@store/actions/TimeActions";
-import { ILocation } from "@types/OpenWeather.location";
+import { ILocation } from "interfaces/OpenWeather.location";
 import axios from 'axios';
 import { useAppDispatch } from "hooks/useAppDispatch";
 import { useDebounce } from 'hooks/useDebounce';

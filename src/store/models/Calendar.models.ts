@@ -1,4 +1,4 @@
-import { IEventItem } from "@types/Calendar";
+import { IEventItem } from "interfaces/Calendar";
 
 export interface ICalendarState {
     isLogin: boolean

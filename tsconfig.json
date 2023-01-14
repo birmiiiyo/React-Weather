@@ -19,7 +19,7 @@
     "paths": {
       "@components/*": ["components/*"],
       "@store/*": ["store/*"],
-      "@types/*": ["types/*"],
+      "@interfaces/*": ["interfaces/*"],
       "@API/*": ["API/*"],
       "@App/*": ["App/*"],
       "@constants/*": ["contants/*"],

@@ -1,5 +1,5 @@
-import { IPositionProps } from '@types/LatLonProps';
-import { ITime } from '@types/TimeZoneDB'
+import { IPositionProps } from '@interfaces/LatLonProps';
+import { ITime } from '@interfaces/TimeZoneDB'
 import axios from 'axios'
 
 export const getCurrentTimeFromAPI = async ({lat,lon}: IPositionProps)=>{

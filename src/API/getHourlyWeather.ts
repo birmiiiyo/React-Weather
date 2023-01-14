@@ -1,4 +1,4 @@
-import { StormGlass } from '@types/StormGlass'
+import { StormGlass } from '@interfaces/StormGlass'
 import axios from 'axios'
 
 interface HourlyAPIProps {

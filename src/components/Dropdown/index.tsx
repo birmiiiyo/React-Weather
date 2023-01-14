@@ -1,4 +1,4 @@
-import { ILocation } from "@types/OpenWeather.location";
+import { ILocation } from "interfaces/OpenWeather.location";
 
 import React, { FC } from 'react'
 

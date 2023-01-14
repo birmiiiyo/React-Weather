@@ -1,6 +1,6 @@
 import { takeLatest, put, call } from 'redux-saga/effects'
 import { apiCalendar } from './../../utils/Calendar'
-import { IEventsListResponse } from '../../types/Calendar'
+import { IEventsListResponse } from '../../interfaces/Calendar'
 
 function* getEventsFromCalendarWorker() {
   try {

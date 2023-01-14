@@ -1,5 +1,5 @@
-import { IOpenWeather } from '@types/OpenWeather.weather'
-import { IPositionProps } from '@types/LatLonProps';
+import { IOpenWeather } from '@interfaces/OpenWeather.weather'
+import { IPositionProps } from '@interfaces/LatLonProps';
 import axios from 'axios'
 
 export const getDailyWeather = async ({lat,lon}: IPositionProps)=>{

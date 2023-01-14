@@ -1,6 +1,6 @@
 import { errorAtDailyWeather } from '@store/actions/ErrorActions';
 import { RootState } from '@store/index';
-import { IOpenWeather } from '@types/OpenWeather.weather';
+import { IOpenWeather } from 'interfaces/OpenWeather.weather';
 import { select, takeEvery, put, call } from 'redux-saga/effects';
 import { getDailyWeather } from './../../API/getDailyWeather';
 import {EDailyWeatherActionType} from '@store/models/DailyWeather.model'

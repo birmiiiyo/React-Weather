@@ -1,4 +1,4 @@
-import { City, List } from "@types/OpenWeather.weather";
+import { City, List } from "@interfaces/OpenWeather.weather";
 
 export interface IDailyWeatherState {
 city: City | null;

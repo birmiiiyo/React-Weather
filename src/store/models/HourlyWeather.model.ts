@@ -1,4 +1,4 @@
-import { Hour } from "@types/StormGlass";
+import { Hour } from "interfaces/StormGlass";
 
 export interface IHourlyWeatherState {
 hours: Hour[],

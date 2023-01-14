@@ -1,6 +1,6 @@
 import { errorAtHourlyWeather } from '@store/actions/ErrorActions';
 import { RootState } from '@store/index';
-import { StormGlass } from '@types/StormGlass';
+import { StormGlass } from 'interfaces/StormGlass';
 import { select, takeEvery, put, call } from 'redux-saga/effects';
 import { getHourlyWeatherAPI } from './../../API/getHourlyWeather';
 import {EHourlyWeatherActionType} from '@store/models/HourlyWeather.model'
