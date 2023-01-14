@@ -13,6 +13,7 @@ import { getDailyWeather } from '@store/actions/DailyWeatherActions';
 import { getCurrentTime } from '@store/actions/TimeActions';
 import { getHourlyWeatherAPI } from 'API/getHourlyWeather';
 import { useAppSelector } from 'hooks/useAppSelector';
+import { getHourlyWeather } from '@store/actions/HourlyWeatherActions';
 
 const bgImg = 'https://krot.info/uploads/posts/2021-12/thumbs/1638363519_2-krot-info-p-solnechnii-peizazh-krasivie-foto-2.jpg'
 const Img = "https://funart.pro/uploads/posts/2021-03/1617081925_43-p-oboi-solnechnii-peizazh-43.jpg"
@@ -27,12 +28,14 @@ function App() {
         dispatch(addLocation({lat: coords.latitude, lon:coords.longitude}))
         dispatch(getDailyWeather())
         dispatch(getCurrentTime())
+        dispatch(getHourlyWeather())
     },
     error => {
       if(error.PERMISSION_DENIED)
       {
         dispatch(getDailyWeather())
         dispatch(getCurrentTime())
+        dispatch(getHourlyWeather())
       }
 })
   },[])
