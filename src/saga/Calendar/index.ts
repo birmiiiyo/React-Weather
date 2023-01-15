@@ -1,16 +1,19 @@
-import { takeLatest, put, call } from 'redux-saga/effects'
+import { Login } from '@components/Login';
+import {  put, call, takeEvery } from 'redux-saga/effects'
 import { apiCalendar } from './../../utils/Calendar'
 import { IEventsListResponse } from '../../interfaces/Calendar'
+import { setCalendarEvents } from '@store/actions/CalendarActions'
+import { ECalendarActionType } from '@store/models/Calendar.models'
 
 function* getEventsFromCalendarWorker() {
   try {
-    const response: IEventsListResponse = yield call(apiCalendar.listUpcomingEvents, 10)
-    yield put(setEvents(response))
+    const response: IEventsListResponse = yield call(apiCalendar.listUpcomingEvents, 5)
+    yield put(setCalendarEvents(response.result.items))    
   } catch (err) {
     console.log(err)
   }
-}
+} 
 
-export function* loadUpcomingEventsWatcher() {
-  yield takeLatest(isSynchronize.type, getEventsFromCalendarWorker)
+export function* eventsWatcher() {
+  yield takeEvery(ECalendarActionType.GET_EVENTS, getEventsFromCalendarWorker)
 }
