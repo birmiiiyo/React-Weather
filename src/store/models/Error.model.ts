@@ -1,6 +1,6 @@
 
 export interface IErrorState {
-error: 'location'|'time'|'daily'|'hourly' | null
+error: 'location'|'time'|'daily'|'hourly' | 'calendar' |null
 message: string
 }
 
@@ -8,7 +8,8 @@ export enum EErrorActionType {
   DAILY_WEATHER_ERROR = 'DAILY_WEATHER_ERROR',
   LOCATION_ERROR = 'LOCATION_ERROR',
   TIME_ERROR = 'TIME_ERROR',
-  HOURLY_WEATHER_ERROR = 'HOURLY_WEATHER_ERROR'
+  HOURLY_WEATHER_ERROR = 'HOURLY_WEATHER_ERROR',
+  CALENDAR_ERROR = 'CALENDAR_ERROR'
 }
 
 interface IDailyWeatherError{
@@ -29,5 +30,10 @@ interface ILocationError{
     type: EErrorActionType.TIME_ERROR;
     payload: string;
   }
+  interface ICalendarError{
+    type: EErrorActionType.CALENDAR_ERROR;
+    payload: string;
+  }
 
-export type TErrorType = IDailyWeatherError | IHourlyWeatherError | ILocationError | ITimeError
+
+export type TErrorType = IDailyWeatherError | IHourlyWeatherError | ILocationError | ITimeError | ICalendarError

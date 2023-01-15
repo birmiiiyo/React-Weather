@@ -1,4 +1,3 @@
-import { Login } from '@components/Login';
 import {  put, call, takeEvery } from 'redux-saga/effects'
 import { apiCalendar } from './../../utils/Calendar'
 import { IEventsListResponse } from '../../interfaces/Calendar'

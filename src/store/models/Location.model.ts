@@ -13,4 +13,4 @@ export interface ILocationAdd {
   payload: ILocationState;
 }
 
-export type TLocationsType = ILocationAdd;
+export type TLocationType = ILocationAdd;

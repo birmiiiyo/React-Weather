@@ -8,7 +8,7 @@ export interface ITimeState {
 
 export enum ETimeActionType {
   SET_CURRENT_TIME = 'SET_CURRENT_TIME',
-  GET_CURRENT_TIME = 'GET_CURRENT_TIME',
+  GET_CURRENT_TIME = 'GET_CURRENT_TIME'
 }
 
 interface ICurrentTimeGet{

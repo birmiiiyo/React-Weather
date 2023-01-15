@@ -13,10 +13,13 @@ export const Login = () => {
   const handleItemClick = () => {
         if (!isLogin) {
           apiCalendar.handleAuthClick()
+          if (apiCalendar.sign) {
+            dispatch(changeLoginStatus())
+          }
         } else {
           apiCalendar.handleSignoutClick();
+          dispatch(changeLoginStatus())
         }
-        dispatch(changeLoginStatus())
       }
     return (<Background>
         <LoginButton onClick={()=>handleItemClick()}>{isLogin ? 'Выйти' : 'Войти'}</LoginButton>

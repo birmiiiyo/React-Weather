@@ -18,4 +18,4 @@ interface IHourlyWeatherSet{
   payload: IHourlyWeatherState;
 }
 
-export type THourlyWeatherType = IHourlyWeatherGet | IHourlyWeatherSet;
+export type THourlyWeatherType = IHourlyWeatherSet |IHourlyWeatherGet;

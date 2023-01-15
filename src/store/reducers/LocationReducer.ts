@@ -1,4 +1,4 @@
-import { ELocationActionType, ILocationState, TLocationsType } from "@store/models/Location.model";
+import { ELocationActionType, ILocationState, TLocationType } from "@store/models/Location.model";
 
 const initialState: ILocationState = {
 lat:35.011665,
@@ -7,7 +7,7 @@ lon:135.768326,
 
 const locationReducer = (
   state = initialState,
-  action: TLocationsType,
+  action: TLocationType,
 ): ILocationState => {
   switch (action.type) {
     case ELocationActionType.ADD_LOCATION:

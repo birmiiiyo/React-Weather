@@ -18,6 +18,8 @@ const ErrorReducer = (
         return {error: "location", message: action.payload} 
     case EErrorActionType.TIME_ERROR:
         return {error: "time", message: action.payload} 
+    case EErrorActionType.CALENDAR_ERROR:
+        return {error: "calendar", message: action.payload}
     default:
       return state;
   }
