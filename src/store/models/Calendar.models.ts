@@ -7,12 +7,18 @@ export interface ICalendarState {
 }
 
 export enum ECalendarActionType {
-  SET_EVENTS = 'SET_EVENTS'
+  GET_EVENTS = 'GET_EVENTS',
+  SET_EVENTS = 'SET_EVENTS',
+  LOGIN_USER = 'LOGIN_USER'
+}
+
+export interface ICalendarGet {
+  type: ECalendarActionType.GET_EVENTS;
 }
 
 export interface ICalendarSet {
   type: ECalendarActionType.SET_EVENTS;
-  payload: ICalendarState;
+  payload: IEventItem[];
 }
 
-export type TLocationsType = ICalendarSet;
+export type TCalendarType = ICalendarSet | ICalendarGet;

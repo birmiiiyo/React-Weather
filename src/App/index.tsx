@@ -15,12 +15,11 @@ import { useAppSelector } from 'hooks/useAppSelector';
 import { getHourlyWeather } from '@store/actions/HourlyWeatherActions';
 import { Calendar } from '@components/Calendar';
 
-const bgImg = 'https://krot.info/uploads/posts/2021-12/thumbs/1638363519_2-krot-info-p-solnechnii-peizazh-krasivie-foto-2.jpg'
-const Img = "https://funart.pro/uploads/posts/2021-03/1617081925_43-p-oboi-solnechnii-peizazh-43.jpg"
 
-function App() {
+const App = () => {
   const dispatch = useAppDispatch()
   const {countryName,zoneName} = useAppSelector(state => state.Time)
+  const {img} = useAppSelector(state => state.DailyWeaher)
   useEffect(()=> {
     navigator.geolocation.getCurrentPosition(
       position => {
@@ -28,21 +27,21 @@ function App() {
         dispatch(addLocation({lat: coords.latitude, lon:coords.longitude}))
         dispatch(getDailyWeather())
         dispatch(getCurrentTime())
-        dispatch(getHourlyWeather())
+        // dispatch(getHourlyWeather())
     },
     error => {
       if(error.PERMISSION_DENIED)
       {
         dispatch(getDailyWeather())
         dispatch(getCurrentTime())
-        dispatch(getHourlyWeather())
+        // dispatch(getHourlyWeather())
       }
 })
   },[dispatch])
 
   return (
-    <Background bodyImage={bgImg}>
-      <Container image={Img}>
+    <Background>
+      <Container image={img}>
         <Center>
           <Search/>
         </Center>

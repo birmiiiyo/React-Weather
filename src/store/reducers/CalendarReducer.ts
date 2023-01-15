@@ -1,4 +1,4 @@
-import { ECalendarActionType, ICalendarState,TCalendarType } from "@store/models/Calendar.models";
+import { ECalendarActionType,ICalendarState,TLocationsType } from "@store/models/Calendar.models";
 
 const initialState: ICalendarState = {
     isLogin: false,
@@ -7,11 +7,11 @@ const initialState: ICalendarState = {
 
 const CalendarReducer = (
   state = initialState,
-  action: TCalendarType,
+  action: TLocationsType,
 ): ICalendarState => {
   switch (action.type) {
-    case ECalendarActionType.SET_CURRENT_TIME:
-        return {...action.payload}
+    case ECalendarActionType.SET_EVENTS:
+        return {...state, events: [...action.payload]}
     default:
       return state;
   }

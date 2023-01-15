@@ -3,6 +3,7 @@ import { EDailyWeatherActionType, IDailyWeatherState,TDailyWeatherType } from "@
 const initialState: IDailyWeatherState = {
 city:null,
 list: null,
+img: ''
 };
 
 const DailyWeatherReducer = (
@@ -11,7 +12,9 @@ const DailyWeatherReducer = (
 ): IDailyWeatherState => {
   switch (action.type) {
     case EDailyWeatherActionType.SET_DAILY_WEATHER:
-        return {...action.payload}
+      return {...state, ...action.payload,}
+    case EDailyWeatherActionType.SET_WEATHER_IMG:
+      return {...state, img: action.payload}
     default:
       return state;
   }

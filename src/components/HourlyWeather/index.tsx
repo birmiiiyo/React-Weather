@@ -10,8 +10,8 @@ export const HourlyWeather = () => {
         <Title>Hourly</Title>
         <List>
             {hours.map(hour=> 
-            <Value key={hour.time.toISOString()}>
-                <div>{hour.time.getHours()}:00</div>
+            <Value key={hour.time.toString()}>
+                <div>{hour.time.toString()}:00</div>
                 <div>{hour.airTemperature.noaa}</div>
             </Value>
             )}

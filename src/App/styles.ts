@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import {CENTER} from './../styles/themes'
-import {IBodyProps,IContainerProps} from './types'
+import {IContainerProps} from './types'
+import background from './../assets/images/background.jpg'
 
 export const Center = styled.div`
 ${CENTER}
@@ -13,10 +14,10 @@ margin:30px;
 `;
 
 
-export const Background = styled.div<IBodyProps>`
+export const Background = styled.div`
 width:100%;
 height:100vh;
-background-image: url(${({bodyImage}) => bodyImage});
+background-image: url(${background});
 background-repeat: no-repeat; 
 background-size: cover;
 transition: background-image 500ms linear;
@@ -31,5 +32,5 @@ height:80vh;
 background-image: url(${({image}) => image});
 background-repeat: no-repeat; 
 background-size: cover;
-opacity:.8;
+opacity:.9;
 `;
