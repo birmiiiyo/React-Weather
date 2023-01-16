@@ -1,28 +1,29 @@
 import { EErrorActionType,IErrorState,TErrorType} from "@store/models/Error.model";
 
 const initialState: IErrorState = {
-error:null,
-message:''
+calendarError:'',
+dailyWeatherError:'',
+hourlyWeatherError:'',
+locationError:'',
+timeError:''
 };
 
-const ErrorReducer = (
+export const ErrorReducer = (
   state = initialState,
   action: TErrorType,
 ): IErrorState => {
   switch (action.type) {
     case EErrorActionType.DAILY_WEATHER_ERROR:
-        return {error: "daily", message: action.payload} 
+        return {...state, dailyWeatherError: action.payload} 
     case EErrorActionType.HOURLY_WEATHER_ERROR:
-        return {error: "hourly", message: action.payload} 
+        return {...state, hourlyWeatherError: action.payload} 
     case EErrorActionType.LOCATION_ERROR:
-        return {error: "location", message: action.payload} 
+        return {...state, locationError: action.payload} 
     case EErrorActionType.TIME_ERROR:
-        return {error: "time", message: action.payload} 
+        return {...state, timeError: action.payload} 
     case EErrorActionType.CALENDAR_ERROR:
-        return {error: "calendar", message: action.payload}
+        return {...state, calendarError: action.payload}
     default:
       return state;
   }
 };
-
-export default ErrorReducer;

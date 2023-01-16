@@ -1,15 +1,19 @@
-import { getCurrentTimeFromAPI } from './../../API/getCurrentTime';
-import { RootState } from '@store/index';
-import { ITime } from 'interfaces/TimeZoneDB';
 import { select, takeEvery, put, call } from 'redux-saga/effects';
-import { setCurrentTime } from '@store/actions/TimeActions';
-import {errorAtTime} from '@store/actions/ErrorActions'
-import { ETimeActionType } from '@store/models/Time.model';
 
+import { getCurrentTimeFromAPI } from '@API/getCurrentTime';
+
+import { RootState } from '@store/index';
+
+import { ITime } from '@interfaces/TimeZoneDB';
+
+import { setCurrentTime } from '@actions/TimeActions';
+import {setErrorAtTime} from '@actions/ErrorActions'
+
+import { ETimeActionType } from '@models/Time.model';
 
 export function* workerCurrentTime() {
 try {
-    const {lat, lon} = yield select((state: RootState) => state.Location)
+    const {lat, lon} = yield select((state: RootState) => state.location)
     const data: ITime= yield call(getCurrentTimeFromAPI, {lat, lon})
     yield put(setCurrentTime({abbreviation: data.abbreviation,
     countryName: data.countryName,
@@ -17,9 +21,9 @@ try {
     zoneName: data.zoneName,
     gmtOffset:data.gmtOffset*1000
 }))
-} catch (error) {
-    yield put(errorAtTime('Ошибка при запросе данных о времени'))
-}
+} catch ({message}) {
+    yield put(setErrorAtTime('Ошибка при запросе данных о времени' + message))
+    }
 }
 
 export function* watcherCurrentTime() {

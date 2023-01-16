@@ -6,7 +6,7 @@ list: null,
 img: ''
 };
 
-const DailyWeatherReducer = (
+export const DailyWeatherReducer = (
   state = initialState,
   action: TDailyWeatherType,
 ): IDailyWeatherState => {
@@ -19,5 +19,3 @@ const DailyWeatherReducer = (
       return state;
   }
 };
-
-export default DailyWeatherReducer;

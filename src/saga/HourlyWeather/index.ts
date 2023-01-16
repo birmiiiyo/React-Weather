@@ -1,23 +1,25 @@
-import { errorAtHourlyWeather } from '@store/actions/ErrorActions';
-import { RootState } from '@store/index';
-import { StormGlass } from 'interfaces/StormGlass';
 import { select, takeEvery, put, call } from 'redux-saga/effects';
-import { getHourlyWeatherAPI } from './../../API/getHourlyWeather';
-import {EHourlyWeatherActionType} from '@store/models/HourlyWeather.model'
-import { setHourlyWeather } from '@store/actions/HourlyWeatherActions';
 
+import { setErrorAtHourlyWeather } from '@actions/ErrorActions';
+import { setHourlyWeather } from '@actions/HourlyWeatherActions';
 
+import { RootState } from '@store/index';
 
+import { StormGlass } from '@interfaces/StormGlass';
+
+import { getHourlyWeatherFromAPI } from '@API/getHourlyWeather';
+
+import {EHourlyWeatherActionType} from '@models/HourlyWeather.model'
 
 export function* workerHourlyWeather() {
 try {
-    const {lat, lon} = yield select((state: RootState) => state.Location)
-    const {time} = yield select((state: RootState) => state.Time)
-    const data: StormGlass= yield call(getHourlyWeatherAPI, {lat, lon, date: time})
+    const {lat, lon} = yield select((state: RootState) => state.location)
+    const {time: date} = yield select((state: RootState) => state.time)
+    const data: StormGlass= yield call(getHourlyWeatherFromAPI, {lat, lon, date})
     yield put(setHourlyWeather({hours: data.hours}))
-} catch (error) {
-    yield put(errorAtHourlyWeather('Ошибка при запросе времени по дням'))
-}
+} catch ({message}) {
+    yield put(setErrorAtHourlyWeather('Ошибка при запросе времени по дням' + message))
+    }
 }
 
 export function* watcherHourlyWeather() {

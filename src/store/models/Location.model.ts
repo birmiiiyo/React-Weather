@@ -1,15 +1,14 @@
 export interface ILocationState {
     lat: number;
     lon: number;
-
 }
 
 export enum ELocationActionType {
-  ADD_LOCATION = 'ADD_LOCATION'
+  SET_LOCATION = 'SET_LOCATION'
 }
 
 export interface ILocationAdd {
-  type: ELocationActionType.ADD_LOCATION;
+  type: ELocationActionType.SET_LOCATION;
   payload: ILocationState;
 }
 

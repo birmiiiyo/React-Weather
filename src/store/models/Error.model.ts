@@ -1,7 +1,10 @@
 
 export interface IErrorState {
-error: 'location'|'time'|'daily'|'hourly' | 'calendar' |null
-message: string
+locationError:string
+dailyWeatherError:string
+hourlyWeatherError:string
+calendarError:string
+timeError:string
 }
 
 export enum EErrorActionType {

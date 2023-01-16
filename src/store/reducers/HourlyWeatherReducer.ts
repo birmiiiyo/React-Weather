@@ -4,7 +4,7 @@ const initialState: IHourlyWeatherState = {
 hours:[]
 };
 
-const HourlyWeatherReducer = (
+export const HourlyWeatherReducer = (
   state = initialState,
   action: THourlyWeatherType,
 ): IHourlyWeatherState => {
@@ -15,5 +15,3 @@ const HourlyWeatherReducer = (
       return state;
   }
 };
-
-export default HourlyWeatherReducer;

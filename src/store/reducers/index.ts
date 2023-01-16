@@ -1,17 +1,17 @@
 import { combineReducers } from 'redux';
 
-import Location from './LocationReducer'
-import DailyWeaher from './DailyWeaherReducer'
-import Time from './TimeReducer'
-import Error from './ErrorReducer'
-import HourlyWeather from './HourlyWeatherReducer'
-import CalendarReducer from './CalendarReducer';
+import { LocationReducer } from './LocationReducer'
+import {DailyWeatherReducer} from './DailyWeaherReducer'
+import {TimeReducer }from './TimeReducer'
+import {ErrorReducer} from './ErrorReducer'
+import {HourlyWeatherReducer} from './HourlyWeatherReducer'
+import {CalendarReducer} from './CalendarReducer';
 
 export const rootReducer = combineReducers({
-    Location,
-    DailyWeaher,
-    Time,
-    Error,
-    HourlyWeather,
-    CalendarReducer
+    location: LocationReducer,
+    dailyWeather: DailyWeatherReducer,
+    time:TimeReducer,
+    error: ErrorReducer,
+    hourlyWeather: HourlyWeatherReducer,
+    calendar: CalendarReducer
 });

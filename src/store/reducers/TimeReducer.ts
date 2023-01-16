@@ -4,12 +4,12 @@ const initialState: ITimeState = {
     countryName:'',
     zoneName:'',
     abbreviation:'',
-    time: new Date(),
+    time: null,
     gmtOffset:0,
 
 };
 
-const TimeReducer = (
+export const TimeReducer = (
   state = initialState,
   action: TTimeType,
 ): ITimeState => {
@@ -20,5 +20,3 @@ const TimeReducer = (
       return state;
   }
 };
-
-export default TimeReducer;

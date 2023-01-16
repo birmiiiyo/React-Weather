@@ -5,7 +5,7 @@ const initialState: ICalendarState = {
     events:[]
 };
 
-const CalendarReducer = (
+export const CalendarReducer = (
   state = initialState,
   action: TCalendarType,
 ): ICalendarState => {
@@ -18,5 +18,3 @@ const CalendarReducer = (
       return state;
   }
 };
-
-export default CalendarReducer;

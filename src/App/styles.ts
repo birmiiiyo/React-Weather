@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import {CENTER} from './../styles/themes'
+import {CENTER} from '@styles/themes'
 import {IContainerProps} from './types'
-import background from './../assets/images/background.jpg'
+import background from '@assets/images/background.jpg'
 
 export const Center = styled.div`
 ${CENTER}

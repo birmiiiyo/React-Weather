@@ -29,8 +29,9 @@
       "@actions/*": ["store/actions/*"],
       "@models/*": ["store/models/*"],
       "@styles/*": ["styles/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@assets/*": ["assets/*"]
     }
   },
-  "include": ["src", "src/react-app-env.d.ts"]
+  "include": ["src", "src/react-app-env.d.ts", "src/index.d.ts"]
 }
