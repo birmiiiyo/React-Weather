@@ -1,15 +1,12 @@
 import { getCurrentTime } from '@store/actions/TimeActions'
-import { useAppDispatch } from 'hooks/useAppDispatch'
-import { useAppSelector } from 'hooks/useAppSelector'
-import React from 'react'
-import { useState, useEffect } from 'react'
-import { getTime } from 'utils/Clock'
-import { Wrapper, TimeItem, Time, DayInfo } from './styles'
+import { useAppDispatch } from '@hooks/useAppDispatch'
+import { useAppSelector } from '@hooks/useAppSelector'
+import React, {  useEffect } from 'react'
+import { Wrapper, DayInfo,Time } from './styles'
 
 export const Clock = () => {
   const dispatch = useAppDispatch()
-  const {time} = useAppSelector (state => state.Time)
-  // const {hours, minutes} = getTime(time)
+  const {time} = useAppSelector (state => state.time)
   useEffect(() => {
     const timerId = setInterval(() => {
       dispatch(getCurrentTime())
@@ -21,10 +18,8 @@ export const Clock = () => {
   }, [dispatch, time])
   return (
     <Wrapper>
-      <TimeItem>
-        {time.toString().slice(0,-3)}
-      </TimeItem>
-        
+     <Time>{time?.toString().slice(-8,-3)}</Time>
+      <DayInfo>{time?.toString().slice(0,10)}</DayInfo>
     </Wrapper>
   )
 }

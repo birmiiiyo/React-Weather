@@ -11,7 +11,10 @@ export const Event = styled.li`
 list-style-type: none;
 padding:5px;
 margin:3px;
-border: 1px solid black;
-background: blue;
 color:white;
+max-width:400px;
+background-color: blue;
+border-radius:10px;
+padding:5px 10px;
+margin:5px 0;
 `

@@ -14,23 +14,28 @@ margin:30px;
 `;
 
 
-export const Background = styled.div`
+export const Background = styled.div<IContainerProps>`
 width:100%;
 height:100vh;
-background-image: url(${background});
+background-image: url(${({image}) => image});
 background-repeat: no-repeat; 
 background-size: cover;
-transition: background-image 500ms linear;
 position:relative;
 ${CENTER}
 `;
 
-export const Container = styled.div<IContainerProps>`
+export const Container = styled.div`
 position:relative;
 width:90vw;
 height:80vh;
-background-image: url(${({image}) => image});
+background-image: url(${background});
 background-repeat: no-repeat; 
 background-size: cover;
 opacity:.9;
 `;
+
+export const Title = styled.h1`
+font-size:34px;
+font-weight:400;
+color:black
+`

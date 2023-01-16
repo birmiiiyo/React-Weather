@@ -4,50 +4,54 @@ import { Search } from '@components/Search';
 import { Information } from '@components/Information';
 import { Login } from '@components/Login';
 import { Clock } from '@components/Time';
-import { useAppDispatch } from 'hooks/useAppDispatch';
-import { addLocation } from '@actions/LocationActions';
-import { getDailyWeather } from '@actions/DailyWeatherActions';
-import { getCurrentTime } from '@actions/TimeActions';
-import { useAppSelector } from '@hooks/useAppSelector';
-import { getHourlyWeather } from '@actions/HourlyWeatherActions';
 import { Calendar } from '@components/Calendar';
 
+import { useAppDispatch } from '@hooks/useAppDispatch';
+import { useAppSelector } from '@hooks/useAppSelector';
+
+import { setLocation } from '@actions/LocationActions';
+import { getDailyWeather } from '@actions/DailyWeatherActions';
+import { getCurrentTime } from '@actions/TimeActions';
+import { getHourlyWeather } from '@actions/HourlyWeatherActions';
+
 import {Background, Container, Center,
-  InfoContainer } from './styles'
+  InfoContainer, Title } from './styles'
 
 const App = () => {
   const dispatch = useAppDispatch()
-  const {countryName,zoneName} = useAppSelector(state => state.Time)
-  const {img} = useAppSelector(state => state.DailyWeaher)
+  const {countryName} = useAppSelector(state => state.time)
+  const {city} = useAppSelector(state => state.dailyWeather)
+  const {img} = useAppSelector(state => state.dailyWeather)
+
   useEffect(()=> {
     navigator.geolocation.getCurrentPosition(
       position => {
         const {coords} = position
-        dispatch(addLocation({lat: coords.latitude, lon:coords.longitude}))
+        dispatch(setLocation({lat: coords.latitude, lon:coords.longitude}))
         dispatch(getDailyWeather())
         dispatch(getCurrentTime())
-        //dispatch(getHourlyWeather())
+        dispatch(getHourlyWeather())
     },
     error => {
       if(error.PERMISSION_DENIED)
       {
         dispatch(getDailyWeather())
         dispatch(getCurrentTime())
-        //dispatch(getHourlyWeather())
+        dispatch(getHourlyWeather())
       }
 })
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  },[])
+  },[dispatch])
 
   return (
-    <Background>
-      <Container image={img}>
+    <Background image={img}>
+      <Container>
         <Center>
           <Search/>
         </Center>
         <InfoContainer>
           <Clock/>
-          <h1>Страна: {countryName}, часовой пояс: {zoneName}</h1>
+          <Title>{city?.name}, {countryName}
+            </Title>
         </InfoContainer>
         <Calendar/>
         <Information/>

@@ -3,21 +3,20 @@ import React from "react"
 import { useAppDispatch } from "@hooks/useAppDispatch"
 import { useAppSelector } from "@hooks/useAppSelector"
 import { getCalendarEvents } from "@actions/CalendarActions"
-import { apiCalendar } from "@utils/Calendar"
 
 import {Container,Event,List} from './styles'
+import { days } from "constants/days"
 
 export const Calendar = () => {
   const dispatch = useAppDispatch()
-  const {events} = useAppSelector(state => state.CalendarReducer)
-  console.log(apiCalendar.handleAuthClick);
+  const {events} = useAppSelector(state => state.calendar)
   
   return (
     <Container>
       <button onClick={()=> dispatch(getCalendarEvents())}>get events</button>
       <List>
         {events.map(event => <Event key={event.start.dateTime}>
-          Time:{event.start.dateTime} - {event.end.dateTime}, Name: {event.summary}, Creator: {event.creator.email}
+          {days[new Date(event.start.dateTime).getDay()]} {event.start.dateTime.slice(11,16)} GTM+3, {event.summary}
           </Event>)}
       </List>
     </Container>

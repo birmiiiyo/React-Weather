@@ -4,7 +4,7 @@ import React from "react"
 import {Container,List,Title,Value} from './styles'
 
 export const HourlyWeather = () => {
-    const {hours} = useAppSelector(state => state.HourlyWeather)
+    const {hours} = useAppSelector(state => state.hourlyWeather)
     
     return (<Container>
         <Title>Hourly</Title>

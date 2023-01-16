@@ -1,7 +1,6 @@
-import { DayliWeather } from "@components/DailyWeather"
+import { DailyWeather } from "@components/DailyWeather"
 import { HourlyWeather } from "@components/HourlyWeather"
-import { useAppSelector } from "hooks/useAppSelector"
-import React, { Fragment, useState } from "react"
+import React, { useState } from "react"
 
 import {Button, Container } from './styles'
 
@@ -18,6 +17,6 @@ export const Information = () => {
     return (<Container>
         <Button onClick={switchWeather} disabled={activeWeather === 'daily'}>Daily</Button>
         <Button onClick={switchWeather} disabled={activeWeather === 'hourly'}>Hourly</Button>
-    {activeWeather === 'daily' ? <DayliWeather/> : <HourlyWeather/>}
+    {activeWeather === 'daily' ? <DailyWeather/> : <HourlyWeather/>}
     </Container>)
 }

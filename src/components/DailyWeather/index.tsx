@@ -1,11 +1,11 @@
+import {  getImage } from "@utils/getIcons"
 import { days } from "constants/days"
 import { useAppSelector } from "hooks/useAppSelector"
 import React, { useState } from "react"
-
-import {Container,List,Title,Value,Button} from './styles'
-export const DayliWeather = () => {
+import {Container,List, Value,Button, Icon, Day, Params} from './styles'
+export const DailyWeather = () => {
     const [time,setTime] = useState<'day'|'night'>('day')
-    const {list} = useAppSelector(state => state.DailyWeaher)
+    const {list} = useAppSelector(state => state.dailyWeather)
     const switchTime = () => {
         if(time === 'day'){
             setTime('night')
@@ -13,19 +13,28 @@ export const DayliWeather = () => {
             setTime('day')
         }
     }
+    console.log(days);
+    
     return (<Container>
-        <Title>daily</Title>
-        <Button onClick={switchTime}>{time}</Button>
+        <div>Weather at: <Button onClick={switchTime}>{time}</Button></div>
         <List>
             {list?.map(day => <Value key={day.sunrise}>
-                <div>Day: {days[new Date(day.dt*1000).getDay()]}</div>
-                <div>temp at {time}: {time === 'day'? day.temp.day.toFixed(1)
-                : 
-                day.temp.night.toFixed(1)}</div>
-                <div>Feels like at {time}: {day.feels_like[time].toFixed(1)}</div>
-                <div>{day.weather[0].main}</div>
-                <div>Clouds: {day.clouds+'%'}</div>
-                <div>Ветер: {day.speed}m/s</div>
+                <Day> 
+                    {days[new Date(day.dt*1000).getDay()]} 
+                    <Icon src={getImage(day.weather[0].main)}/> 
+                </Day>
+                <Params>
+                {time}: {(day.temp[time]-273).toFixed(1)}*C
+                </Params>
+                <Params>
+                Feels like: {(day.feels_like[time]-273).toFixed(1)}*C
+                </Params>
+                <Params>
+                Overcast: {day.clouds}%
+                </Params>
+                <Params>
+                Wind speed: {day.speed}m/s
+                </Params>
             </Value>)}
         </List>
     </Container>)

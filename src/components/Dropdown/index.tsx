@@ -12,7 +12,7 @@ interface DropdownProps {
 }
 
 export const Dropdown:FC<DropdownProps> = ({search, cities,dropdown,clickHandler }) => {
-  const changeLocation = (lat: number,lon: number) => {
+  const changeLocation = (lat: number,lon: number) => () => {
     clickHandler(lat, lon)
   }
   return (
@@ -20,7 +20,7 @@ export const Dropdown:FC<DropdownProps> = ({search, cities,dropdown,clickHandler
       <List>
         {(!cities.length && search.length > 2)  ? <Item>Not found</Item> :
         (cities?.map(city => (
-          <Item key={city.lat+city.lon} onClick={()=> changeLocation(city.lat, city.lon)}>
+          <Item key={city.lat+city.lon} onClick={changeLocation(city.lat, city.lon)}>
             {city.name} {city.state} {city.country}
           </Item>
         )))}

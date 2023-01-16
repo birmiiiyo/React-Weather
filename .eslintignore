@@ -1,5 +1,6 @@
 .git
 .vscode
 .husky
+src/assets
 node_modules
 webpack.config.js
