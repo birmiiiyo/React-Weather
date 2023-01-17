@@ -3,7 +3,7 @@ import ApiCalendar from 'react-google-calendar-api';
 import { useAppSelector } from '@hooks/useAppSelector';
 import { useAppDispatch } from '@hooks/useAppDispatch';
 
-import { setCalendarEvents,userLogin,userLogout } from '@actions/CalendarActions';
+import { setCalendarEvents,userLogin,userLogout } from '@store/actions/CalendarActions';
 
 import { IEventsListResponse } from '@interfaces/Calendar';
 

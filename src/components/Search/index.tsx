@@ -6,10 +6,10 @@ import { useDebounce } from '@hooks/useDebounce';
 
 import { Dropdown } from "@components/Dropdown";
 
-import { getDailyWeather } from "@actions/DailyWeatherActions";
-import { setLocation } from "@actions/LocationActions";
-import { getCurrentTime } from "@actions/TimeActions";
-import { getHourlyWeather } from "@actions/HourlyWeatherActions";
+import { getDailyWeather } from "@store/actions/DailyWeatherActions";
+import { setLocation } from "@store/actions/LocationActions";
+import { getCurrentTime } from "@store/actions/TimeActions";
+import { getHourlyWeather } from "@store/actions/HourlyWeatherActions";
 
 import { ILocation } from "@interfaces/OpenWeather.location";
 

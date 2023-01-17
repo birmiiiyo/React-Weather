@@ -27,9 +27,6 @@
       "@constants/*": ["contants/*"],
       "@hooks/*": ["hooks/*"],
       "@saga/*": ["saga/*"],
-      "@reducers/*": ["store/reducers/*"],
-      "@actions/*": ["store/actions/*"],
-      "@models/*": ["store/models/*"],
       "@styles/*": ["styles/*"],
       "@utils/*": ["utils/*"],
       "@assets/*": ["assets/*"]

@@ -6,10 +6,10 @@ import { RootState } from '@store/index';
 
 import { ITime } from '@interfaces/TimeZoneDB';
 
-import { setCurrentTime } from '@actions/TimeActions';
-import {setErrorAtTime} from '@actions/ErrorActions'
+import { setCurrentTime } from '@store/actions/TimeActions';
+import {setErrorAtTime} from '@store/actions/ErrorActions'
 
-import { ETimeActionType } from '@models/Time.model';
+import { ETimeActionType } from '@store/models/Time.model';
 
 export function* workerCurrentTime() {
 try {

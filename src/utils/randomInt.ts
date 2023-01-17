@@ -1,5 +1,4 @@
-export const randomInteger = () =>  {
-    const rand =1 +  Math.random() * 3;
-    return Math.floor(rand);
-  }
-
+export const randomInteger = () => {
+  const rand = 0 - 0.5 + Math.random() * 11
+  return Math.round(rand);
+}

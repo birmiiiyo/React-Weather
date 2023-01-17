@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
 position:absolute;
-top:-50px;
+top:-55px;
 display:flex;
 flex-direction:column;
 `;
@@ -19,6 +19,5 @@ background-color:black;
 
 export const Label = styled.label`
 font-weight: 400;
-color: black;
 font-size: 16px;
 `;

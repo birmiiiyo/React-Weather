@@ -5,7 +5,6 @@ export const getCalendarEvents= () => ({
     type: ECalendarActionType.GET_EVENTS
 })
 
-
 export const setCalendarEvents = (events: IEventItem[]) => ({
     type: ECalendarActionType.SET_EVENTS, 
     payload: events

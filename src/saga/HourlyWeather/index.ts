@@ -1,7 +1,7 @@
 import { select, takeEvery, put, call } from 'redux-saga/effects';
 
-import { setErrorAtHourlyWeather } from '@actions/ErrorActions';
-import { setHourlyWeather } from '@actions/HourlyWeatherActions';
+import { setErrorAtHourlyWeather } from '@store/actions/ErrorActions';
+import { setHourlyWeather } from '@store/actions/HourlyWeatherActions';
 
 import { RootState } from '@store/index';
 
@@ -9,7 +9,7 @@ import { StormGlass } from '@interfaces/StormGlass';
 
 import { getHourlyWeatherFromAPI } from '@API/getHourlyWeather';
 
-import {EHourlyWeatherActionType} from '@models/HourlyWeather.model'
+import {EHourlyWeatherActionType} from '@store/models/HourlyWeather.model'
 
 export function* workerHourlyWeather() {
 try {

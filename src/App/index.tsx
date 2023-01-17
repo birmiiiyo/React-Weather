@@ -9,10 +9,10 @@ import { Calendar } from '@components/Calendar';
 import { useAppDispatch } from '@hooks/useAppDispatch';
 import { useAppSelector } from '@hooks/useAppSelector';
 
-import { setLocation } from '@actions/LocationActions';
-import { getDailyWeather } from '@actions/DailyWeatherActions';
-import { getCurrentTime } from '@actions/TimeActions';
-import { getHourlyWeather } from '@actions/HourlyWeatherActions';
+import { setLocation } from '@store/actions/LocationActions';
+import { getDailyWeather } from '@store/actions/DailyWeatherActions';
+import { getCurrentTime } from '@store/actions/TimeActions';
+import { getHourlyWeather } from '@store/actions/HourlyWeatherActions';
 
 import {Background, Container, Center,
   InfoContainer, Title } from './styles'
@@ -45,7 +45,7 @@ const App = () => {
 
   return (
 <ErrorBoundary>
-<Background image={img}>
+  <Background image={img}>
       <Container>
         <Center>
           <Search/>

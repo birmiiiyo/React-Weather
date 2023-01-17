@@ -1,6 +1,5 @@
 import { SelectTime } from "@components/Select"
 import { convertDateTimeToHours } from "@components/Time/helpers"
-import { Hour, IStormGlass } from "@interfaces/StormGlass"
 import { useAppSelector } from "hooks/useAppSelector"
 import React, { useState } from "react"
 
