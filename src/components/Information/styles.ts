@@ -4,7 +4,6 @@ export const Container = styled.div`{
     position:absolute;
     bottom: 0;
     background-color: #302b2b;
-    opacity:.9;
     height: 250px;
     width:100%;
     padding:10px;

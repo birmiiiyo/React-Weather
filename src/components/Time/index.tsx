@@ -1,32 +1,28 @@
 import { getCurrentTime } from '@store/actions/TimeActions'
 import { useAppDispatch } from '@hooks/useAppDispatch'
 import { useAppSelector } from '@hooks/useAppSelector'
-import React, {  useEffect } from 'react'
-import { Wrapper, DayInfo,Time } from './styles'
+import React, {  useEffect, useState } from 'react'
+import { Wrapper, DateInfo,Time } from './styles'
+import { convertDateTimeToHours } from './helpers'
+import { weekDays } from 'constants/weekDays'
+import { months } from 'constants/months'
 
 export const Clock = () => {
-  const dispatch = useAppDispatch()
-  const {time} = useAppSelector (state => state.time)
-  useEffect(() => {
-    const timerId = setInterval(() => {
-      dispatch(getCurrentTime())
-    }, 1000*60)
+  const [time, setTime] = useState<Date>(() => new Date());
 
-    return function clear() {
-      clearInterval(timerId)
-    }
-  }, [dispatch, time])
+  useEffect(() => {
+    const timeChange = setInterval(() => {
+      const date = new Date();
+      date.getMinutes() !== time.getMinutes() && setTime(date);
+    }, 1000);
+
+    return () => clearInterval(timeChange);
+  }, [time]);
   return (
     <Wrapper>
      <Time>{convertDateTimeToHours(time)}</Time>
-      <DayInfo>{time?.toString().slice(0,10)}</DayInfo>
+      <DateInfo>{`${weekDays[time.getDay()]}, ${months[time.getMonth()]}
+         ${time.getDate()}, ${time.getFullYear()}`}</DateInfo>
     </Wrapper>
   )
-}
-
-function convertDateTimeToHours(time: Date): string {
-  return new Date(time).toLocaleTimeString('en', {
-    timeStyle: 'short',
-    hour12: false,
-  });
 }

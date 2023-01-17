@@ -6,9 +6,11 @@ right:0;
 `;
 
 export const LoginButton = styled.button`
-padding:10px;
-margin:10px;
-color:black;
-background-color:orange;
-font-size:24px;
+padding:5px;
+margin:7px;
+color:white;
+background-color:black;
+border:none;
+border-radius:8px;
+font-size:18px;
 `;

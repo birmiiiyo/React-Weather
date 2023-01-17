@@ -1,11 +1,12 @@
 import {  getImage } from "@utils/getIcons"
-import { days } from "constants/days"
+import { weekDays } from "constants/weekDays"
 import { useAppSelector } from "hooks/useAppSelector"
 import React, { useState } from "react"
 import {Container,List, Value,Button, Icon, Day, Params} from './styles'
 export const DailyWeather = () => {
     const [time,setTime] = useState<'day'|'night'>('day')
     const {list} = useAppSelector(state => state.dailyWeather)
+
     const switchTime = () => {
         if(time === 'day'){
             setTime('night')
@@ -13,21 +14,19 @@ export const DailyWeather = () => {
             setTime('day')
         }
     }
-    console.log(days);
-    
     return (<Container>
         <div>Weather at: <Button onClick={switchTime}>{time}</Button></div>
         <List>
             {list?.map(day => <Value key={day.sunrise}>
                 <Day> 
-                    {days[new Date(day.dt*1000).getDay()]} 
+                    {weekDays[new Date(day.dt*1000).getDay()]} 
                     <Icon src={getImage(day.weather[0].main)}/> 
                 </Day>
                 <Params>
-                {time}: {(day.temp[time]-273).toFixed(1)}*C
+                {time}: {(day.temp[time]-273).toFixed(1) === '-0.0' ? '0.0': (day.temp[time]-273).toFixed(1)}°C
                 </Params>
                 <Params>
-                Feels like: {(day.feels_like[time]-273).toFixed(1)}*C
+                Feels like: {(day.feels_like[time]-273).toFixed(1)}°C
                 </Params>
                 <Params>
                 Overcast: {day.clouds}%

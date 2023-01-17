@@ -28,7 +28,7 @@ position:relative;
 background:white;
 width:90vw;
 height:80vh;
-opacity:.8;
+opacity:.75;
 `;
 
 export const Title = styled.h1`

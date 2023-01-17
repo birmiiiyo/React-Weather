@@ -7,6 +7,6 @@ import {Background,LoginButton} from './styles'
 export const Login = () => {
     const [isLogin, setLogin] = useEvents()
     return (<Background>
-        <LoginButton onClick={setLogin}>{isLogin ? 'Выйти' : 'Войти'}</LoginButton>
+        <LoginButton onClick={setLogin}>{isLogin ? 'sign out' : 'sign in'}</LoginButton>
     </Background>)
 }

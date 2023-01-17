@@ -1,20 +1,26 @@
-import { Dropdown } from "@components/Dropdown";
-import { getDailyWeather } from "@store/actions/DailyWeatherActions";
-import { setLocation } from "@store/actions/LocationActions";
-import { getCurrentTime } from "@store/actions/TimeActions";
-import { ILocation } from "interfaces/OpenWeather.location";
 import axios from 'axios';
-import { useAppDispatch } from "hooks/useAppDispatch";
-import { useDebounce } from 'hooks/useDebounce';
 import React, { useEffect, useState } from 'react'
 
+import { useAppDispatch } from "@hooks/useAppDispatch";
+import { useDebounce } from '@hooks/useDebounce';
+
+import { Dropdown } from "@components/Dropdown";
+
+import { getDailyWeather } from "@actions/DailyWeatherActions";
+import { setLocation } from "@actions/LocationActions";
+import { getCurrentTime } from "@actions/TimeActions";
+import { getHourlyWeather } from "@actions/HourlyWeatherActions";
+
+import { ILocation } from "@interfaces/OpenWeather.location";
+
 import {Container,Input,Label} from './styles'
+import { noDigits } from "./helpers";
 
 export const Search = () => {
   const dispatch = useAppDispatch()
   const [search, setSearch] = useState<string>('');
   const [data, setData] = useState<Array<ILocation>>([])
-  const [dropdown, setDropdown] = useState<boolean>(true);
+  const [dropdown, setDropdown] = useState(true);
   const debounced = useDebounce(search);
 
   useEffect(() => {
@@ -26,6 +32,7 @@ export const Search = () => {
   const clickHandler = (lat:number, lon: number) => {
     dispatch(setLocation({lat,lon}))
     dispatch(getDailyWeather())
+    //dispatch(getHourlyWeather())
     dispatch(getCurrentTime())
     setDropdown(false);
     setSearch('')
@@ -36,9 +43,16 @@ export const Search = () => {
         <Input
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search for city..."
-          value={search}/>
-          <Dropdown search={search} cities={data} dropdown={dropdown} 
-          clickHandler={clickHandler}/>
+          type='text'
+          onKeyDown={noDigits}
+          value={search}
+          />
+        <Dropdown 
+          search={search} 
+          cities={data} 
+          dropdown={dropdown} 
+          clickHandler={clickHandler}
+          />
     </Container>
   )
 }

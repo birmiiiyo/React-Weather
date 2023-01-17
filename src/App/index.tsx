@@ -31,14 +31,14 @@ const App = () => {
         dispatch(setLocation({lat: coords.latitude, lon:coords.longitude}))
         dispatch(getDailyWeather())
         dispatch(getCurrentTime())
-       // dispatch(getHourlyWeather())
+        //dispatch(getHourlyWeather())
     },
     error => {
       if(error.PERMISSION_DENIED)
       {
         dispatch(getDailyWeather())
         dispatch(getCurrentTime())
-       // dispatch(getHourlyWeather())
+        //dispatch(getHourlyWeather())
       }
 })
   },[dispatch])

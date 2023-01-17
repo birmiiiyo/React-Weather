@@ -11,9 +11,10 @@ export const Input = styled.input`
 width:200px;
 border: none;
 padding: 5px 0 5px 5px;
-font-weight: 600;
+font-weight: 400;
 font-size: 18px;
-color:black
+color:white;
+background-color:black;
 `;
 
 export const Label = styled.label`

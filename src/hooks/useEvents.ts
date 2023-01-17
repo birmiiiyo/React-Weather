@@ -14,7 +14,7 @@ export const useEvents = () => {
   const setLogin = () => {
     if (!isLogin) {
         ApiCalendar.handleAuthClick().then(() => {
-            ApiCalendar.listUpcomingEvents(5)
+            ApiCalendar.listUpcomingEvents(4)
           .then(({ result }: IEventsListResponse) => {
           dispatch(userLogin());
           dispatch(setCalendarEvents(result.items));

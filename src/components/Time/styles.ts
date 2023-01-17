@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 
 export const Wrapper = styled.div`
-  height: 30%;
   display: flex;
   flex-direction: column;
   color:black;
@@ -13,7 +12,7 @@ export const Time = styled.div`
   }
 `
 
-export const DayInfo = styled.div`
+export const DateInfo = styled.div`
   font-size: 30px;
   color:inherit;
 `

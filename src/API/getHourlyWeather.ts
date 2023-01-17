@@ -1,10 +1,10 @@
 import axios from 'axios'
 
-import { StormGlass } from '@interfaces/StormGlass'
+import { IStormGlass } from 'interfaces/StormGlass'
 
-import { SEVEN_DAY } from 'constants/days'
+import { ONE_DAY } from 'constants/index'
 
-import { getUNIXformat } from '@utils/getUNIXformat'
+import { getUNIXformat } from 'utils/getUNIXformat'
 
 interface HourlyAPIProps {
     lat:number,
@@ -13,7 +13,7 @@ interface HourlyAPIProps {
 }
 
 export const getHourlyWeatherFromAPI = async ({lat, lon, date}: HourlyAPIProps)=>{
-     const request = await axios<StormGlass>({
+     const request = await axios<IStormGlass>({
         url: `${process.env.STORMGLASS_PATH}`,
         method: 'GET',
         headers:{
@@ -24,7 +24,7 @@ export const getHourlyWeatherFromAPI = async ({lat, lon, date}: HourlyAPIProps)=
             lng: lon,
             params: 'airTemperature,pressure,currentSpeed,visibility,humidity',
             start: date,
-            end: getUNIXformat(date) + SEVEN_DAY
+            end: getUNIXformat(date) + ONE_DAY
         }
     })
     return request.data

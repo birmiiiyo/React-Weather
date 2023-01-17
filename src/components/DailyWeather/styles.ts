@@ -23,7 +23,6 @@ flex-direction:column;
 `
 
 export const Button = styled.button`
-width:40px;
 padding:5px;
 margin:5px;
 color:black;
@@ -35,7 +34,6 @@ font-size:16px;
 export const Icon = styled.img`
   height: 30px;
   width: 30px;
-  padding-left:10px;
 `
 
 export const Day = styled.div`
@@ -43,7 +41,7 @@ display:flex;
 border-bottom: 1px white solid;
 padding-bottom:3px;
 margin-bottom:3px;
-justify-content:flex-start;
+justify-content:space-between;
 align-items:center;
 font-size:24px;
 `
