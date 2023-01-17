@@ -1,0 +1,9 @@
+{
+  "clientId": "57154253167-0u2mb0kjfec22qgt1e5mg23uf20u0gvo.apps.googleusercontent.com",
+  "apiKey": "AIzaSyDKmzvLjvikjJAI0AYObvbVkblDdDBKp6o",
+  "scope": "https://www.googleapis.com/auth/calendar",
+  "plugin_name": "react-weather",
+  "discoveryDocs": [
+    "https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest"
+  ]
+}

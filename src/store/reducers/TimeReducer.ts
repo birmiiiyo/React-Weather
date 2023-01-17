@@ -4,7 +4,7 @@ const initialState: ITimeState = {
     countryName:'',
     zoneName:'',
     abbreviation:'',
-    time: null,
+    time: new Date(),
     gmtOffset:0,
 
 };

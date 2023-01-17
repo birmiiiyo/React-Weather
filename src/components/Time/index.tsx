@@ -18,8 +18,15 @@ export const Clock = () => {
   }, [dispatch, time])
   return (
     <Wrapper>
-     <Time>{time?.toString().slice(-8,-3)}</Time>
+     <Time>{convertDateTimeToHours(time)}</Time>
       <DayInfo>{time?.toString().slice(0,10)}</DayInfo>
     </Wrapper>
   )
+}
+
+function convertDateTimeToHours(time: Date): string {
+  return new Date(time).toLocaleTimeString('en', {
+    timeStyle: 'short',
+    hour12: false,
+  });
 }

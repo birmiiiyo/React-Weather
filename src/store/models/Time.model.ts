@@ -2,7 +2,7 @@ export interface ITimeState {
     countryName:string
     zoneName:string
     abbreviation:string
-    time: Date | null
+    time: Date
     gmtOffset:number
 }
 

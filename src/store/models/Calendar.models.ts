@@ -9,7 +9,8 @@ export interface ICalendarState {
 export enum ECalendarActionType {
   GET_EVENTS = 'GET_EVENTS',
   SET_EVENTS = 'SET_EVENTS',
-  LOGIN_USER = 'LOGIN_USER'
+  LOGIN_USER = 'LOGIN_USER',
+  LOGOUT_USER='LOGOUT_USER'
 }
 
 export interface ICalendarGet {
@@ -21,8 +22,12 @@ export interface ICalendarSet {
   payload: IEventItem[];
 }
 
-export interface changeLoginUser {
+export interface ILoginUser {
   type: ECalendarActionType.LOGIN_USER;
 }
 
-export type TCalendarType = ICalendarSet | ICalendarGet | changeLoginUser;
+export interface ILogoutUser {
+  type: ECalendarActionType.LOGOUT_USER;
+}
+
+export type TCalendarType = ICalendarSet | ICalendarGet | ILoginUser | ILogoutUser;

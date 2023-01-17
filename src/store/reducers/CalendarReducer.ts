@@ -13,7 +13,9 @@ export const CalendarReducer = (
     case ECalendarActionType.SET_EVENTS:
         return {...state, events: [...action.payload]}
     case ECalendarActionType.LOGIN_USER:
-        return {...state, isLogin: !state.isLogin}
+        return {...state, isLogin: true}
+    case ECalendarActionType.LOGOUT_USER:
+        return {...state, isLogin: false}
     default:
       return state;
   }

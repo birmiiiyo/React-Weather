@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import {CENTER} from '@styles/themes'
 import {IContainerProps} from './types'
-import background from '@assets/images/background.jpg'
 
 export const Center = styled.div`
 ${CENTER}
@@ -26,12 +25,10 @@ ${CENTER}
 
 export const Container = styled.div`
 position:relative;
+background:white;
 width:90vw;
 height:80vh;
-background-image: url(${background});
-background-repeat: no-repeat; 
-background-size: cover;
-opacity:.9;
+opacity:.8;
 `;
 
 export const Title = styled.h1`

@@ -12,6 +12,10 @@ export const setCalendarEvents = (events: IEventItem[]) => ({
     }
 )
 
-export const changeLoginStatus = () => ({
-    type: ECalendarActionType.LOGIN_USER
+export const userLogin = () => ({
+    type: ECalendarActionType.LOGIN_USER,
+})
+
+export const userLogout = () => ({
+    type: ECalendarActionType.LOGOUT_USER,
 })

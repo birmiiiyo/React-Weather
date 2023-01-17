@@ -1,21 +1,12 @@
 import React from 'react'
 
-import { apiCalendar } from '@utils/Calendar'
-import { useAppSelector } from '@hooks/useAppSelector'
+import { useEvents } from '@hooks/useEvents'
 
 import {Background,LoginButton} from './styles'
 
 export const Login = () => {
-  const {isLogin} = useAppSelector(state => state.calendar)
-
-  const handleItemClick = () => {
-        if (!isLogin) {
-          apiCalendar.handleAuthClick()
-        } else {
-          apiCalendar.handleSignoutClick();
-        }
-      }
+    const [isLogin, setLogin] = useEvents()
     return (<Background>
-        <LoginButton onClick={()=>handleItemClick()}>{isLogin ? 'Выйти' : 'Войти'}</LoginButton>
+        <LoginButton onClick={setLogin}>{isLogin ? 'Выйти' : 'Войти'}</LoginButton>
     </Background>)
 }
