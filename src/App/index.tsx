@@ -16,6 +16,7 @@ import { getHourlyWeather } from '@actions/HourlyWeatherActions';
 
 import {Background, Container, Center,
   InfoContainer, Title } from './styles'
+import ErrorBoundary from '@components/ErrorBoundary';
 
 const App = () => {
   const dispatch = useAppDispatch()
@@ -43,7 +44,8 @@ const App = () => {
   },[dispatch])
 
   return (
-    <Background image={img}>
+<ErrorBoundary>
+<Background image={img}>
       <Container>
         <Center>
           <Search/>
@@ -58,6 +60,7 @@ const App = () => {
       </Container>
       <Login/>
     </Background>
+</ErrorBoundary>
   );
 }
 
