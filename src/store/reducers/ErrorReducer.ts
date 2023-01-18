@@ -5,7 +5,6 @@ import {
 } from '@store/models/Error.model'
 
 const initialState: IErrorState = {
-  calendarError: '',
   dailyWeatherError: '',
   hourlyWeatherError: '',
   locationError: '',
@@ -25,8 +24,6 @@ export const ErrorReducer = (
       return { ...state, locationError: action.payload }
     case EErrorActionType.TIME_ERROR:
       return { ...state, timeError: action.payload }
-    case EErrorActionType.CALENDAR_ERROR:
-      return { ...state, calendarError: action.payload }
     default:
       return state
   }

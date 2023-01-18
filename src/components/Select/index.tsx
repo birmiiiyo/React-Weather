@@ -2,12 +2,12 @@ import React, { ChangeEvent, Dispatch, FC, SetStateAction } from 'react'
 
 import { convertDateTimeToHours } from '@utils/convertDateTimeToHours'
 
-import { IStormGlass } from '@interfaces/StormGlass'
+import { Hour } from '@interfaces/StormGlass'
 
 import { Option, Select } from './styles'
 
 interface ISelectTimeProps {
-  hours: IStormGlass[]
+  hours: Hour[]
   setActiveHours: Dispatch<SetStateAction<number>>
 }
 

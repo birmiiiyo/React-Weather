@@ -5,7 +5,7 @@ import { setHourlyWeather } from '@store/actions/HourlyWeatherActions'
 
 import { RootState } from '@store/index'
 
-import { StormGlass } from '@interfaces/StormGlass'
+import { IStormGlass } from '@interfaces/StormGlass'
 
 import { getHourlyWeatherFromAPI } from '@API/getHourlyWeather'
 
@@ -15,7 +15,7 @@ export function* workerHourlyWeather() {
   try {
     const { lat, lon } = yield select((state: RootState) => state.location)
     const { time: date } = yield select((state: RootState) => state.time)
-    const data: StormGlass = yield call(getHourlyWeatherFromAPI, {
+    const data: IStormGlass = yield call(getHourlyWeatherFromAPI, {
       lat,
       lon,
       date,
@@ -23,7 +23,7 @@ export function* workerHourlyWeather() {
     yield put(setHourlyWeather({ hours: data.hours }))
   } catch ({ message }) {
     yield put(
-      setErrorAtHourlyWeather('Ошибка при запросе времени по дням' + message)
+      setErrorAtHourlyWeather('Ошибка при запросе погоды по часам' + message)
     )
   }
 }

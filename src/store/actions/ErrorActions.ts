@@ -19,8 +19,3 @@ export const setErrorAtLocation = (message: string) => ({
   type: EErrorActionType.LOCATION_ERROR,
   payload: message,
 })
-
-export const setErrorAtCalendar = (message: string) => ({
-  type: EErrorActionType.CALENDAR_ERROR,
-  payload: message,
-})

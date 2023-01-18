@@ -16,28 +16,35 @@ import { getCurrentTime } from '@store/actions/TimeActions'
 import { getHourlyWeather } from '@store/actions/HourlyWeatherActions'
 
 import { Background, Container, Center } from './styles'
+import { setErrorAtLocation } from '@store/actions/ErrorActions'
 
 const App = () => {
   const dispatch = useAppDispatch()
   const { img } = useAppSelector(state => state.dailyWeather)
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      position => {
-        const { coords } = position
-        dispatch(setLocation({ lat: coords.latitude, lon: coords.longitude }))
-        dispatch(getDailyWeather())
-        dispatch(getCurrentTime())
-        //dispatch(getHourlyWeather())
-      },
-      error => {
-        if (error.PERMISSION_DENIED) {
+    try {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          const { coords } = position
+          dispatch(setLocation({ lat: coords.latitude, lon: coords.longitude }))
           dispatch(getDailyWeather())
           dispatch(getCurrentTime())
           //dispatch(getHourlyWeather())
+        },
+        error => {
+          if (error.PERMISSION_DENIED) {
+            dispatch(getDailyWeather())
+            dispatch(getCurrentTime())
+            //dispatch(getHourlyWeather())
+          }
         }
-      }
-    )
+      )
+    } catch ({ message }) {
+      dispatch(
+        setErrorAtLocation('Ошибка при получении местоположения' + message)
+      )
+    }
   }, [dispatch])
 
   return (

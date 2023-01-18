@@ -23,7 +23,6 @@ export const Background = styled.div<IContainerProps>`
 export const Container = styled.div`
   background: ${theme.colors.white};
   width: 90vw;
-  height: 80vh;
   opacity: 0.75;
   ${COLUMN}
 `
