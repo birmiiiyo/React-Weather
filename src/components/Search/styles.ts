@@ -1,23 +1,24 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
+
+import { theme, CENTER, COLUMN } from '@styles/themes'
 
 export const Container = styled.div`
-position:absolute;
-top:-55px;
-display:flex;
-flex-direction:column;
-`;
+  position: absolute;
+  top: 10px;
+  ${COLUMN}
+`
 
 export const Input = styled.input`
-width:200px;
-border: none;
-padding: 5px 0 5px 5px;
-font-weight: 400;
-font-size: 18px;
-color:white;
-background-color:black;
-`;
+  width: 200px;
+  border: none;
+  padding: ${theme.RANGE.XS}px;
+  font-weight: ${theme.FONT_WEIGHT.M};
+  font-size: ${theme.FONT_SIZE.S}px;
+  color: ${theme.colors.white};
+  background-color: ${theme.colors.dark};
+`
 
 export const Label = styled.label`
-font-weight: 400;
-font-size: 16px;
-`;
+  font-weight: ${theme.FONT_WEIGHT.M};
+  font-size: ${theme.FONT_SIZE.S}px;
+`

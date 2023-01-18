@@ -1,17 +1,32 @@
-import React from "react"
+import React from 'react'
 
-import { useAppSelector } from "@hooks/useAppSelector"
+import { useAppSelector } from '@hooks/useAppSelector'
 
-import {Event,List} from './styles'
-import { weekDays } from "constants/weekDays"
+import { weekDays } from 'constants/weekDays'
+
+import { Event, List, InfoText } from './styles'
 
 export const Calendar = () => {
-  const {events,isLogin} = useAppSelector(state => state.calendar)
+  const { events, isLogin } = useAppSelector(state => state.calendar)
+  const { calendarError } = useAppSelector(state => state.error)
+
+  if (calendarError) {
+    return <InfoText>{calendarError}</InfoText>
+  }
   return (
-      <List>
-        {!isLogin ? <h1 style={{color:'black'}}>Login to view events</h1> : events.length === 1 ? <h1 style={{color:'black'}}>no upcoming events</h1> : events.map(event => <Event key={event.start.dateTime}>
-          {weekDays[new Date(event.start.dateTime).getDay()]} {event.start.dateTime.slice(11,16)}, {event.summary}
-          </Event>)}
-      </List>
+    <List>
+      {!isLogin ? (
+        <InfoText>Login to view events</InfoText>
+      ) : events.length === 0 ? (
+        <InfoText>No upcoming events</InfoText>
+      ) : (
+        events.map(event => (
+          <Event key={event.start.dateTime}>
+            {weekDays[new Date(event.start.dateTime).getDay()]}{' '}
+            {event.start.dateTime.slice(11, 16)}, {event.summary}
+          </Event>
+        ))
+      )}
+    </List>
   )
 }

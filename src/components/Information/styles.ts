@@ -1,24 +1,13 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
+import { SPACE_BETWEEN, theme } from '@styles/themes'
 
-export const Container = styled.div`{
-    position:absolute;
-    bottom: 0;
-    background-color: #302b2b;
-    height: 250px;
-    width:100%;
-    padding:10px;
-}`
+export const InfoContainer = styled.div`
+  ${SPACE_BETWEEN}
+  margin:${theme.RANGE.M}px ${theme.RANGE.M}px;
+`
 
-export const Button = styled.button`
-    color:black;
-    background-color:white;
-    border:none;
-    border-radius:5px;
-    padding:8px;
-    margin:10px;
-    cursor:pointer;
-    &:disabled{
-        background-color:red;
-        cursor:no-drop;
-    }
+export const Title = styled.h1`
+  font-size: ${theme.FONT_SIZE.XL}px;
+  font-weight: ${theme.FONT_WEIGHT.L};
+  color: ${theme.colors.dark};
 `

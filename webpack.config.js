@@ -1,8 +1,8 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const Dotenv = require('dotenv-webpack');
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const Dotenv = require('dotenv-webpack')
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
 module.exports = {
   entry: './src/index.tsx',
@@ -44,20 +44,20 @@ module.exports = {
           },
         ],
       },
-      { 
-        test: /\\.(png|jp(e*)g|svg|gif)$/, 
-        use: ['file-loader'], 
-      }
+      {
+        test: /\\.(png|jp(e*)g|svg|gif)$/,
+        use: ['file-loader'],
+      },
     ],
   },
   resolve: {
     extensions: ['*', '.js', '.jsx', '.ts', '.tsx'],
     plugins: [
       new TsconfigPathsPlugin({
-        configFile: "./tsconfig.json",
-        extensions: [".ts", ".tsx"],
-        mainFields: ["browser"],
+        configFile: './tsconfig.json',
+        extensions: ['.ts', '.tsx'],
+        mainFields: ['browser'],
       }),
-    ]
+    ],
   },
 }

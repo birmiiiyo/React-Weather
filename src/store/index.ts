@@ -1,26 +1,26 @@
-import { legacy_createStore as createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
-import { persistReducer,persistStore } from 'redux-persist';
-import createSagaMiddleware from '@redux-saga/core';
+import { legacy_createStore as createStore, applyMiddleware } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
+import { persistReducer, persistStore } from 'redux-persist'
+import createSagaMiddleware from '@redux-saga/core'
 import storage from 'redux-persist/lib/storage'
 
 import { rootSaga } from '@saga/index'
 
-import { rootReducer } from './reducers';
+import { rootReducer } from './reducers'
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['calendar','location']
+  whitelist: ['calendar', 'location', 'hourlyWeather'],
 }
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
-const sagaMiddleWare = createSagaMiddleware();
+const sagaMiddleWare = createSagaMiddleware()
 
 export const store = createStore(
   persistedReducer,
-    composeWithDevTools(applyMiddleware(sagaMiddleWare)),
-  )
+  composeWithDevTools(applyMiddleware(sagaMiddleWare))
+)
 
 export const persistor = persistStore(store)
 

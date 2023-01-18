@@ -10,9 +10,8 @@ export const getImage = (mode: string): string => {
     case 'Rain':
       return iconRain
     case 'Snow':
-    return iconSnow
+      return iconSnow
     default:
       return iconClear
-  
   }
 }

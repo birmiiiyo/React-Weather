@@ -1,5 +1,5 @@
 export interface MockapiRequest {
-    type: string;
-    src: string;
-    id: string;
+  type: string
+  src: string
+  id: string
 }

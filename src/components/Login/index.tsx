@@ -2,11 +2,15 @@ import React from 'react'
 
 import { useEvents } from '@hooks/useEvents'
 
-import {Background,LoginButton} from './styles'
+import { Background, LoginButton } from './styles'
 
 export const Login = () => {
-    const [isLogin, setLogin] = useEvents()
-    return (<Background>
-        <LoginButton onClick={setLogin}>{isLogin ? 'sign out' : 'sign in'}</LoginButton>
-    </Background>)
+  const [isLogin, setLogin] = useEvents()
+  return (
+    <Background>
+      <LoginButton onClick={setLogin}>
+        {isLogin ? 'sign out' : 'sign in'}
+      </LoginButton>
+    </Background>
+  )
 }

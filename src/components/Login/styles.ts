@@ -1,16 +1,18 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
+
+import { theme } from '@styles/themes'
 
 export const Background = styled.div`
-position:absolute;
-right:0;
-`;
+  position: absolute;
+  right: 0;
+`
 
 export const LoginButton = styled.button`
-padding:5px;
-margin:7px;
-color:white;
-background-color:black;
-border:none;
-border-radius:8px;
-font-size:18px;
-`;
+  padding: ${theme.RANGE.XS}px;
+  margin: ${theme.RANGE.S}px;
+  color: ${theme.colors.white};
+  background-color: ${theme.colors.dark};
+  border: none;
+  border-radius: ${theme.BORDER_RADIUS.M}px;
+  font-size: ${theme.FONT_SIZE.M}px;
+`

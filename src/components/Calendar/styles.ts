@@ -1,21 +1,27 @@
-import styled from "styled-components";
-
-export const Container = styled.div``
+import styled from 'styled-components'
+import { theme } from '@styles/themes'
 
 export const List = styled.ul`
-font-size:18px;
-font-weight:600;
-margin:15px 30px 0;
+  font-size: ${theme.FONT_SIZE.S}px;
+  font-weight: ${theme.FONT_WEIGHT.L};
+  margin: ${theme.RANGE.S}px ${theme.RANGE.M}px;
+  height: 150px;
 `
 
 export const Event = styled.li`
-list-style-type: none;
-padding:5px;
-margin:3px;
-color:white;
-max-width:400px;
-background-color: black;
-border-radius:10px;
-padding:5px 10px;
-margin:5px 0;
+  list-style-type: none;
+  padding: ${theme.RANGE.XS}px;
+  margin: ${theme.RANGE.XS}px;
+  color: ${theme.colors.white};
+  max-width: 400px;
+  background-color: ${theme.colors.dark};
+  border-radius: ${theme.BORDER_RADIUS.M}px;
+  padding: ${theme.RANGE.XS}px ${theme.RANGE.S}px;
+  margin: ${theme.RANGE.XS}px ${theme.RANGE.NONE};
+`
+
+export const InfoText = styled.h1`
+  font-size: ${theme.FONT_SIZE.M}px;
+  font-weight: ${theme.FONT_WEIGHT.M};
+  color: ${theme.colors.dark};
 `

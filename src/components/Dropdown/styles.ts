@@ -1,22 +1,23 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
+
+import { theme } from '@styles/themes'
 
 export const List = styled.ul`
-position: absolute;
-width: 200px;
-top: 45px;
-background-color: white;
-padding: 3px 3px;
-`;
+  position: absolute;
+  width: 200px;
+  top: 45px;
+  background-color: ${theme.colors.white};
+  padding: ${theme.RANGE.XS}px;
+`
 
 export const Item = styled.li`
-list-style-type: none;
-background-color: black;
-color: white;
-cursor: pointer;
-  padding: 2px 4px;
+  list-style-type: none;
+  background-color: ${theme.colors.dark};
+  color: ${theme.colors.white};
+  cursor: pointer;
+  padding: ${theme.RANGE.XS};
   &:hover {
-    background-color: white;
-    color: black;
-    cursor: pointer;
+    background-color: ${theme.colors.white};
+    color: ${theme.colors.dark};
   }
 `

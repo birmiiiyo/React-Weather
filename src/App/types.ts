@@ -1,3 +1,3 @@
 export interface IContainerProps {
-    image: string
+  image: string
 }

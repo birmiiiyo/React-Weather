@@ -1,17 +1,21 @@
-import { EHourlyWeatherActionType, IHourlyWeatherState,THourlyWeatherType } from "@store/models/HourlyWeather.model";
+import {
+  EHourlyWeatherActionType,
+  IHourlyWeatherState,
+  THourlyWeatherType,
+} from '@store/models/HourlyWeather.model'
 
 const initialState: IHourlyWeatherState = {
-hours:[]
-};
+  hours: [],
+}
 
 export const HourlyWeatherReducer = (
   state = initialState,
-  action: THourlyWeatherType,
+  action: THourlyWeatherType
 ): IHourlyWeatherState => {
   switch (action.type) {
     case EHourlyWeatherActionType.SET_HOURLY_WEATHER:
-        return {...action.payload}
+      return { ...action.payload }
     default:
-      return state;
+      return state
   }
-};
+}
