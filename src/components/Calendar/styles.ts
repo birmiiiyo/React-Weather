@@ -1,11 +1,15 @@
 import styled from 'styled-components'
 import { theme } from '@styles/themes'
+import { devices } from '@styles/breakpoints'
 
 export const List = styled.ul`
   font-size: ${theme.FONT_SIZE.S}px;
   font-weight: ${theme.FONT_WEIGHT.L};
   margin: ${theme.RANGE.S}px ${theme.RANGE.M}px;
   height: 150px;
+  @media ${devices.tablet} {
+    margin: auto;
+  }
 `
 
 export const Event = styled.li`

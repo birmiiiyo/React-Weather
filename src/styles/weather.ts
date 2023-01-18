@@ -1,3 +1,4 @@
+import { devices } from './breakpoints'
 import styled from 'styled-components'
 
 import { CENTER, COLUMN, SPACE_BETWEEN, theme } from './themes'
@@ -10,6 +11,9 @@ export const List = styled.ul`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  @media ${devices.laptop} {
+    flex-wrap: wrap;
+  }
 `
 
 export const Value = styled.li`

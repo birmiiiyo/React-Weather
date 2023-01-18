@@ -51,9 +51,6 @@ const App = () => {
     <ErrorBoundary>
       <Background image={img}>
         <Container>
-          <Center>
-            <Search />
-          </Center>
           <Information />
           <Calendar />
           <Weather />

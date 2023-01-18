@@ -3,9 +3,8 @@ import styled from 'styled-components'
 import { theme, CENTER, COLUMN } from '@styles/themes'
 
 export const Container = styled.div`
-  position: absolute;
-  top: 10px;
   ${COLUMN}
+  margin: ${theme.RANGE.M}px;
 `
 
 export const Input = styled.input`
@@ -21,4 +20,5 @@ export const Input = styled.input`
 export const Label = styled.label`
   font-weight: ${theme.FONT_WEIGHT.M};
   font-size: ${theme.FONT_SIZE.S}px;
+  color: ${theme.colors.dark};
 `

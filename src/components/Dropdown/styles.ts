@@ -5,7 +5,7 @@ import { theme } from '@styles/themes'
 export const List = styled.ul`
   position: absolute;
   width: 200px;
-  top: 45px;
+  top: 145px;
   background-color: ${theme.colors.white};
   padding: ${theme.RANGE.XS}px;
 `

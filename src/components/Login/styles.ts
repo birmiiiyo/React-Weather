@@ -1,3 +1,4 @@
+import { devices } from '@styles/breakpoints'
 import styled from 'styled-components'
 
 import { theme } from '@styles/themes'
@@ -5,6 +6,10 @@ import { theme } from '@styles/themes'
 export const Background = styled.div`
   position: absolute;
   right: 0;
+  top: 50%;
+  @media ${devices.tablet} {
+    top: 0;
+  }
 `
 
 export const LoginButton = styled.button`

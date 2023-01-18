@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { CENTER, theme, COLUMN } from '@styles/themes'
 import { IContainerProps } from './types'
+import { devices } from '@styles/breakpoints'
 
 export const Center = styled.div`
   ${CENTER}
@@ -13,7 +14,7 @@ export const InfoContainer = styled.div`
 
 export const Background = styled.div<IContainerProps>`
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
   background-image: url(${({ image }) => image});
   background-repeat: no-repeat;
   background-size: cover;
@@ -25,6 +26,9 @@ export const Container = styled.div`
   width: 90vw;
   opacity: 0.75;
   ${COLUMN}
+  @media ${devices.laptop} {
+    width: 100%;
+  }
 `
 
 export const Title = styled.h1`

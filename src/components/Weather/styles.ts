@@ -5,7 +5,6 @@ import { theme } from '@styles/themes'
 export const Container = styled.div`
    {
     background-color: ${theme.colors.dark};
-    height: 250px;
     width: 100%;
     padding: ${theme.RANGE.S}px;
   }
