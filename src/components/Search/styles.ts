@@ -5,6 +5,7 @@ import { theme, CENTER, COLUMN } from '@styles/themes'
 export const Container = styled.div`
   ${COLUMN}
   margin: ${theme.RANGE.M}px;
+  position: relative;
 `
 
 export const Input = styled.input`

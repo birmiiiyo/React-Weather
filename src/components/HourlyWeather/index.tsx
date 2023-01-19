@@ -16,7 +16,7 @@ export const HourlyWeather = () => {
   const [activeHours, setActiveHours] = useState(0)
 
   return (
-    <Container>
+    <Container id="hourlyWeather">
       {hourlyWeatherError || (
         <>
           {' '}
@@ -24,7 +24,7 @@ export const HourlyWeather = () => {
             hours={filterPerFourHour(hours)}
             setActiveHours={setActiveHours}
           />
-          <List>
+          <List id="hour">
             {hours.slice(activeHours, activeHours + 4).map(hour => (
               <Value key={hour.humidity.noaa + hour.pressure.noaa}>
                 <Params>Time: {convertDateTimeToHours(hour.time)}</Params>

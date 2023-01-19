@@ -28,14 +28,14 @@ export const DailyWeather = () => {
     }
   }
   return (
-    <Container>
+    <Container id="dailyWeather">
       {dailyWeatherError || (
         <>
           {' '}
           <div>
             Weather at: <Button onClick={switchTime}>{time}</Button>
           </div>
-          <List>
+          <List id="day">
             {list?.map(day => (
               <Value key={day.sunrise}>
                 <Day>

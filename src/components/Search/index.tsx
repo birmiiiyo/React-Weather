@@ -47,6 +47,7 @@ export const Search = () => {
         onChange={e => setSearch(e.target.value)}
         placeholder="Search for city..."
         type="text"
+        id="input"
         onKeyDown={noDigits}
         value={search}
       />

@@ -15,7 +15,7 @@ export const Information = () => {
     <InfoContainer>
       <Clock />
       <Search />
-      <Title>
+      <Title id="city">
         {city?.name}, {countryName}
       </Title>
     </InfoContainer>

@@ -7,5 +7,5 @@ export const getCurrentTimeFromAPI = async ({ lat, lon }: IPositionProps) => {
   const request = await axios.get<ITime>(
     `${process.env.TIMEZONEDB_PATH}&lat=${lat}&lng=${lon}`
   )
-  return request.data
+  return request?.data
 }

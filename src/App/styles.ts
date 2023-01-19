@@ -24,6 +24,7 @@ export const Background = styled.div<IContainerProps>`
 export const Container = styled.div`
   background: ${theme.colors.white};
   width: 90vw;
+  min-height: 540px;
   opacity: 0.75;
   ${COLUMN}
   @media ${devices.laptop} {

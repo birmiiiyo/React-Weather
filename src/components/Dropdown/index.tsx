@@ -23,7 +23,7 @@ export const Dropdown: FC<DropdownProps> = ({
   return (
     <>
       {dropdown && (
-        <List>
+        <List id="dropdown">
           {!cities.length && search.length > 2 ? (
             <Item>Not found</Item>
           ) : (

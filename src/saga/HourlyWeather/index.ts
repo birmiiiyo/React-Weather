@@ -21,6 +21,7 @@ export function* workerHourlyWeather() {
       date,
     })
     yield put(setHourlyWeather({ hours: data.hours }))
+    yield put(setErrorAtHourlyWeather(''))
   } catch ({ message }) {
     yield put(
       setErrorAtHourlyWeather('Ошибка при запросе погоды по часам' + message)

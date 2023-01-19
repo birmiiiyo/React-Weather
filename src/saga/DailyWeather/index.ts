@@ -27,6 +27,7 @@ export function* workerDailyWeather() {
       data.list[0].weather[0].main
     )
     yield put(setWeatherImg(image[randomInteger()].src))
+    yield put(setErrorAtDailyWeather(''))
   } catch ({ message }) {
     yield put(
       setErrorAtDailyWeather('Ошибка при запросе погоды по дням' + message)

@@ -14,14 +14,14 @@ export const Calendar = () => {
     return <InfoText>{calendarError}</InfoText>
   }
   return (
-    <List>
+    <List id="calendars">
       {!isLogin ? (
         <InfoText>Login to view events</InfoText>
       ) : events.length === 0 ? (
         <InfoText>No upcoming events</InfoText>
       ) : (
         events.map(event => (
-          <Event key={event.start.dateTime}>
+          <Event key={event.start.dateTime} id="event">
             {weekDays[new Date(event.start.dateTime).getDay()]}{' '}
             {event.start.dateTime.slice(11, 16)}, {event.summary}
           </Event>

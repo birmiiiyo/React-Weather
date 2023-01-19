@@ -24,7 +24,7 @@ export const Clock = () => {
   }, [time])
   return (
     <Wrapper>
-      <Time>{convertDateTimeToHours(time)}</Time>
+      <Time id="hour">{convertDateTimeToHours(time)}</Time>
       <DateInfo>{`${weekDays[time.getDay()]}, ${months[time.getMonth()]}
          ${time.getDate()}, ${time.getFullYear()}`}</DateInfo>
     </Wrapper>

@@ -5,6 +5,7 @@ import { CENTER, COLUMN, SPACE_BETWEEN, theme } from './themes'
 
 export const Container = styled.div`
   ${COLUMN}
+  min-height:240px;
 `
 
 export const List = styled.ul`
