@@ -6,10 +6,8 @@ import { RootState } from '@store/index'
 
 import { ITime } from '@interfaces/TimeZoneDB'
 
-import { setCurrentTime } from '@store/actions/TimeActions'
-import { setErrorAtTime } from '@store/actions/ErrorActions'
-
-import { ETimeActionType } from '@store/models/Time.model'
+import { setCurrentTime } from '@store/actionCreators/TimeActions'
+import { setErrorAtTime } from '@store/actionCreators/ErrorActions'
 
 export function* workerCurrentTime() {
   try {
@@ -30,5 +28,5 @@ export function* workerCurrentTime() {
 }
 
 export function* watcherCurrentTime() {
-  yield takeEvery(ETimeActionType.GET_CURRENT_TIME, workerCurrentTime)
+  yield takeEvery('GET_CURRENT_TIME', workerCurrentTime)
 }

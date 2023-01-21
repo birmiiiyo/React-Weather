@@ -1,15 +1,13 @@
 import { select, takeEvery, put, call } from 'redux-saga/effects'
 
-import { setErrorAtHourlyWeather } from '@store/actions/ErrorActions'
-import { setHourlyWeather } from '@store/actions/HourlyWeatherActions'
+import { setErrorAtHourlyWeather } from '@store/actionCreators/ErrorActions'
+import { setHourlyWeather } from '@store/actionCreators/HourlyWeatherActions'
 
 import { RootState } from '@store/index'
 
 import { IStormGlass } from '@interfaces/StormGlass'
 
 import { getHourlyWeatherFromAPI } from '@API/getHourlyWeather'
-
-import { EHourlyWeatherActionType } from '@store/models/HourlyWeather.model'
 
 export function* workerHourlyWeather() {
   try {
@@ -21,7 +19,6 @@ export function* workerHourlyWeather() {
       date,
     })
     yield put(setHourlyWeather({ hours: data.hours }))
-    yield put(setErrorAtHourlyWeather(''))
   } catch ({ message }) {
     yield put(
       setErrorAtHourlyWeather('Ошибка при запросе погоды по часам' + message)
@@ -30,8 +27,5 @@ export function* workerHourlyWeather() {
 }
 
 export function* watcherHourlyWeather() {
-  yield takeEvery(
-    EHourlyWeatherActionType.GET_HOURLY_WEATHER,
-    workerHourlyWeather
-  )
+  yield takeEvery('GET_HOURLY_WEATHER', workerHourlyWeather)
 }

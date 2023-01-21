@@ -1,8 +1,15 @@
-import {
-  EErrorActionType,
-  IErrorState,
-  TErrorType,
-} from '@store/models/Error.model'
+import { InferValueTypes } from '@interfaces/ActionCreators'
+
+import * as actions from '../actionCreators/ErrorActions'
+
+type ErrorActionsTypes = ReturnType<InferValueTypes<typeof actions>>
+
+interface IErrorState {
+  locationError: string
+  dailyWeatherError: string
+  hourlyWeatherError: string
+  timeError: string
+}
 
 const initialState: IErrorState = {
   dailyWeatherError: '',
@@ -13,16 +20,16 @@ const initialState: IErrorState = {
 
 export const ErrorReducer = (
   state = initialState,
-  action: TErrorType
+  action: ErrorActionsTypes
 ): IErrorState => {
   switch (action.type) {
-    case EErrorActionType.DAILY_WEATHER_ERROR:
+    case 'DAILY_WEATHER_ERROR':
       return { ...state, dailyWeatherError: action.payload }
-    case EErrorActionType.HOURLY_WEATHER_ERROR:
+    case 'LOCATION_ERROR':
       return { ...state, hourlyWeatherError: action.payload }
-    case EErrorActionType.LOCATION_ERROR:
+    case 'TIME_ERROR':
       return { ...state, locationError: action.payload }
-    case EErrorActionType.TIME_ERROR:
+    case 'HOURLY_WEATHER_ERROR':
       return { ...state, timeError: action.payload }
     default:
       return state

@@ -1,8 +1,13 @@
-import {
-  ELocationActionType,
-  ILocationState,
-  TLocationType,
-} from '@store/models/Location.model'
+import * as actions from '../actionCreators/LocationActions'
+
+import type { InferValueTypes } from '@interfaces/ActionCreators'
+
+type LocationActionsTypes = ReturnType<InferValueTypes<typeof actions>>
+
+export interface ILocationState {
+  lat: number
+  lon: number
+}
 
 const initialState: ILocationState = {
   lat: 35.011665,
@@ -11,10 +16,10 @@ const initialState: ILocationState = {
 
 export const LocationReducer = (
   state = initialState,
-  action: TLocationType
+  action: LocationActionsTypes
 ): ILocationState => {
   switch (action.type) {
-    case ELocationActionType.SET_LOCATION:
+    case 'SET_LOCATION':
       return { ...action.payload }
     default:
       return state

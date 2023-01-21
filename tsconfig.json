@@ -24,12 +24,13 @@
       "@interfaces/*": ["interfaces/*"],
       "@API/*": ["API/*"],
       "@App/*": ["App/*"],
-      "@constants/*": ["contants/*"],
+      "@constants/*": ["constants/*"],
       "@hooks/*": ["hooks/*"],
       "@saga/*": ["saga/*"],
       "@styles/*": ["styles/*"],
       "@utils/*": ["utils/*"],
-      "@assets/*": ["assets/*"]
+      "@assets/*": ["assets/*"],
+      "@tests": ["tests/index.tsx"]
     }
   },
   "include": ["src", "src/react-app-env.d.ts", "src/index.d.ts"]

@@ -19,14 +19,14 @@ export const SelectTime: FC<ISelectTimeProps> = ({ hours, setActiveHours }) => {
 
   return (
     <Select onChange={handleSubmit} id="selectTime">
-      {hours.slice(0, hours.length - 1).map((hour, index) => (
+      {hours?.slice(0, hours.length - 1)?.map((hour, index) => (
         <Option
           key={hour?.time.toString()}
           value={index}
           defaultValue={0}
           id="optionTime"
         >
-          {convertDateTimeToHours(hour?.time)} -{' '}
+          {convertDateTimeToHours(hour.time)} -{' '}
           {convertDateTimeToHours(hours[index + 1]?.time)}
         </Option>
       ))}

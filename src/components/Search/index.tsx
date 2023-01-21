@@ -6,10 +6,10 @@ import { useDebounce } from '@hooks/useDebounce'
 
 import { Dropdown } from '@components/Dropdown'
 
-import { getDailyWeather } from '@store/actions/DailyWeatherActions'
-import { setLocation } from '@store/actions/LocationActions'
-import { getCurrentTime } from '@store/actions/TimeActions'
-import { getHourlyWeather } from '@store/actions/HourlyWeatherActions'
+import { getDailyWeather } from '@store/actionCreators/DailyWeatherActions'
+import { setLocation } from '@store/actionCreators/LocationActions'
+import { getCurrentTime } from '@store/actionCreators/TimeActions'
+import { getHourlyWeather } from '@store/actionCreators/HourlyWeatherActions'
 
 import { ILocation } from '@interfaces/OpenWeather.location'
 
@@ -35,8 +35,8 @@ export const Search = () => {
   const clickHandler = (lat: number, lon: number) => {
     dispatch(setLocation({ lat, lon }))
     dispatch(getDailyWeather())
-    dispatch(getHourlyWeather())
     dispatch(getCurrentTime())
+    dispatch(getHourlyWeather())
     setDropdown(false)
     setSearch('')
   }
@@ -46,7 +46,6 @@ export const Search = () => {
       <Input
         onChange={e => setSearch(e.target.value)}
         placeholder="Search for city..."
-        type="text"
         id="input"
         onKeyDown={noDigits}
         value={search}

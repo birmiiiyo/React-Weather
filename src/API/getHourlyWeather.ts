@@ -9,7 +9,7 @@ import { getUNIXformat } from 'utils/getUNIXformat'
 interface HourlyAPIProps {
   lat: number
   lon: number
-  date: string
+  date: Date
 }
 
 export const getHourlyWeatherFromAPI = async ({
@@ -28,7 +28,7 @@ export const getHourlyWeatherFromAPI = async ({
       lng: lon,
       params: 'airTemperature,pressure,currentSpeed,visibility,humidity',
       start: date,
-      end: getUNIXformat(date) + ONE_DAY,
+      end: getUNIXformat(date.toString()) + ONE_DAY,
     },
   })
   return request.data

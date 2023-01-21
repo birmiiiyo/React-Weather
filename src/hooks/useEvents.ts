@@ -7,7 +7,7 @@ import {
   setCalendarEvents,
   userLogin,
   userLogout,
-} from '@store/actions/CalendarActions'
+} from '@store/actionCreators/CalendarActions'
 
 import { IEventsListResponse } from '@interfaces/Calendar'
 

@@ -1,8 +1,16 @@
-import {
-  ETimeActionType,
-  ITimeState,
-  TTimeType,
-} from '@store/models/Time.model'
+import type { InferValueTypes } from '@interfaces/ActionCreators'
+
+import * as actions from '../actionCreators/TimeActions'
+
+type TimeActionsTypes = ReturnType<InferValueTypes<typeof actions>>
+
+export interface ITimeState {
+  countryName: string
+  zoneName: string
+  abbreviation: string
+  time: Date
+  gmtOffset: number
+}
 
 const initialState: ITimeState = {
   countryName: '',
@@ -14,10 +22,10 @@ const initialState: ITimeState = {
 
 export const TimeReducer = (
   state = initialState,
-  action: TTimeType
+  action: TimeActionsTypes
 ): ITimeState => {
   switch (action.type) {
-    case ETimeActionType.SET_CURRENT_TIME:
+    case 'SET_CURRENT_TIME':
       return { ...action.payload }
     default:
       return state

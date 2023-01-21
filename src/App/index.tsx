@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 
-import { Search } from '@components/Search'
 import { Weather } from '@components/Weather'
 import { Information } from '@components/Information'
 import { Login } from '@components/Login'
@@ -10,13 +9,13 @@ import { ErrorBoundary } from '@components/ErrorBoundary'
 import { useAppDispatch } from '@hooks/useAppDispatch'
 import { useAppSelector } from '@hooks/useAppSelector'
 
-import { setLocation } from '@store/actions/LocationActions'
-import { getDailyWeather } from '@store/actions/DailyWeatherActions'
-import { getCurrentTime } from '@store/actions/TimeActions'
-import { getHourlyWeather } from '@store/actions/HourlyWeatherActions'
+import { setLocation } from '@store/actionCreators/LocationActions'
+import { getDailyWeather } from '@store/actionCreators/DailyWeatherActions'
+import { getCurrentTime } from '@store/actionCreators/TimeActions'
+import { getHourlyWeather } from '@store/actionCreators/HourlyWeatherActions'
 
-import { Background, Container, Center } from './styles'
-import { setErrorAtLocation } from '@store/actions/ErrorActions'
+import { Background, Container } from './styles'
+import { setErrorAtLocation } from '@store/actionCreators/ErrorActions'
 
 const App = () => {
   const dispatch = useAppDispatch()
@@ -42,7 +41,7 @@ const App = () => {
       )
     } catch ({ message }) {
       dispatch(
-        setErrorAtLocation('Ошибка при получении местоположения' + message)
+        setErrorAtLocation('Ошибка при получении местоположения ' + message)
       )
     }
   }, [dispatch])

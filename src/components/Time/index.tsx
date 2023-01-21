@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
-import { getCurrentTime } from '@store/actions/TimeActions'
-import { useAppDispatch } from '@hooks/useAppDispatch'
-import { useAppSelector } from '@hooks/useAppSelector'
-
-import { weekDays } from 'constants/weekDays'
-import { months } from 'constants/months'
+import { weekDays } from '@constants/weekDays'
+import { months } from '@constants/months'
 
 import { convertDateTimeToHours } from '@utils/convertDateTimeToHours'
 

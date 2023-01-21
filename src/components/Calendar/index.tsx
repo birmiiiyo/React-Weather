@@ -2,17 +2,13 @@ import React from 'react'
 
 import { useAppSelector } from '@hooks/useAppSelector'
 
-import { weekDays } from 'constants/weekDays'
+import { weekDays } from '@constants/weekDays'
 
 import { Event, List, InfoText } from './styles'
 
 export const Calendar = () => {
   const { events, isLogin } = useAppSelector(state => state.calendar)
-  const { calendarError } = useAppSelector(state => state.error)
 
-  if (calendarError) {
-    return <InfoText>{calendarError}</InfoText>
-  }
   return (
     <List id="calendars">
       {!isLogin ? (

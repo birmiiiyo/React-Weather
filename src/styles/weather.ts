@@ -1,7 +1,7 @@
 import { devices } from './breakpoints'
 import styled from 'styled-components'
 
-import { CENTER, COLUMN, SPACE_BETWEEN, theme } from './themes'
+import { COLUMN, SPACE_BETWEEN, theme } from './themes'
 
 export const Container = styled.div`
   ${COLUMN}

@@ -1,8 +1,15 @@
-import {
-  EDailyWeatherActionType,
-  IDailyWeatherState,
-  TDailyWeatherType,
-} from '@store/models/DailyWeather.model'
+import { City, List } from '@interfaces/OpenWeather.weather'
+import type { InferValueTypes } from '@interfaces/ActionCreators'
+
+import * as actions from '../actionCreators/DailyWeatherActions'
+
+type DailyWeatherActionsTypes = ReturnType<InferValueTypes<typeof actions>>
+
+interface IDailyWeatherState {
+  city: City | null
+  list: List[] | null
+  img: string
+}
 
 const initialState: IDailyWeatherState = {
   city: null,
@@ -12,12 +19,12 @@ const initialState: IDailyWeatherState = {
 
 export const DailyWeatherReducer = (
   state = initialState,
-  action: TDailyWeatherType
+  action: DailyWeatherActionsTypes
 ): IDailyWeatherState => {
   switch (action.type) {
-    case EDailyWeatherActionType.SET_DAILY_WEATHER:
+    case 'SET_DAILY_WEATHER':
       return { ...state, ...action.payload }
-    case EDailyWeatherActionType.SET_WEATHER_IMG:
+    case 'SET_WEATHER_IMG':
       return { ...state, img: action.payload }
     default:
       return state
