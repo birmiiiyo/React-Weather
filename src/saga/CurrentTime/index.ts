@@ -17,7 +17,7 @@ export function* workerCurrentTime() {
       setCurrentTime({
         abbreviation: data.abbreviation,
         countryName: data.countryName,
-        time: data.formatted as unknown as Date,
+        time: data.formatted,
         zoneName: data.zoneName,
         gmtOffset: data.gmtOffset * 1000,
       })

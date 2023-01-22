@@ -8,7 +8,7 @@ export interface ITimeState {
   countryName: string
   zoneName: string
   abbreviation: string
-  time: Date
+  time: string
   gmtOffset: number
 }
 
@@ -16,7 +16,7 @@ const initialState: ITimeState = {
   countryName: '',
   zoneName: '',
   abbreviation: '',
-  time: new Date(),
+  time: '',
   gmtOffset: 0,
 }
 

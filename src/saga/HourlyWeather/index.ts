@@ -12,11 +12,12 @@ import { getHourlyWeatherFromAPI } from '@API/getHourlyWeather'
 export function* workerHourlyWeather() {
   try {
     const { lat, lon } = yield select((state: RootState) => state.location)
-    const { time: date } = yield select((state: RootState) => state.time)
+    const { time } = yield select((state: RootState) => state.time)
+
     const data: IStormGlass = yield call(getHourlyWeatherFromAPI, {
       lat,
       lon,
-      date,
+      formatted: time,
     })
     yield put(setHourlyWeather({ hours: data.hours }))
   } catch ({ message }) {

@@ -1,12 +1,11 @@
 import React from 'react'
 import '@testing-library/jest-dom'
-import { render } from '@tests'
+import { render, screen } from '@tests'
 import { Calendar } from './index'
 
 describe('Calendar without localStorage', () => {
-  it('render Calendar', () => {
-    const { findByText } = render(<Calendar />)
-    const initialText = findByText(/Login to view events/i)
-    expect(initialText).toBeInTheDocument()
+  it('render Calendar without login', async () => {
+    render(<Calendar />)
+    expect(await screen.findByText(/Login to view events/i)).toBeInTheDocument()
   })
 })

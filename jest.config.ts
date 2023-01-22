@@ -19,6 +19,9 @@ const config: Config = {
     '@tests': '<rootDir>/src/tests/index.tsx',
   },
   modulePathIgnorePatterns: ['<rootDir>/.husky/', '<rootDir>/cypress/'],
+  transform: {
+    '^.+\\.tsx?$': '<rootDir>/node_modules/ts-jest/preprocessor.js',
+  },
 }
 
 export default config
