@@ -13,7 +13,7 @@ export const Background = styled.div`
 `
 
 export const LoginButton = styled.button`
-  padding: ${theme.RANGE.XS}px;
+  padding: ${theme.RANGE.S}px;
   margin: ${theme.RANGE.S}px;
   color: ${theme.colors.white};
   background-color: ${theme.colors.dark};

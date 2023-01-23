@@ -9,13 +9,13 @@ import { getUNIXformat } from 'utils/getUNIXformat'
 interface HourlyAPIProps {
   lat: number
   lon: number
-  formatted: string
+  time: string
 }
 
 export const getHourlyWeatherFromAPI = async ({
   lat,
   lon,
-  formatted,
+  time,
 }: HourlyAPIProps) => {
   const request = await axios<IStormGlass>({
     url: `${process.env.STORMGLASS_PATH}`,
@@ -27,8 +27,8 @@ export const getHourlyWeatherFromAPI = async ({
       lat: lat,
       lng: lon,
       params: 'airTemperature,pressure,currentSpeed,visibility,humidity',
-      start: getUNIXformat(formatted),
-      end: getUNIXformat(formatted) + ONE_DAY,
+      start: time,
+      end: getUNIXformat(time) + ONE_DAY,
     },
   })
   return request.data

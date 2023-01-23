@@ -24,7 +24,7 @@ export const HourlyWeather = () => {
       <List id="hour">
         {hours?.slice(activeHours, activeHours + 4)?.map(hour => (
           <Value key={hour.humidity.noaa + hour.pressure.noaa}>
-            <Params>Time: {convertDateTimeToHours(hour.time)}</Params>
+            <Params>Time: {hour.time.toString().slice(11, 16)}</Params>
             <Params>temp: {hour.airTemperature.noaa}°C</Params>
             <Params>pressure: {hour.pressure.noaa}mm Hg</Params>
             <Params>visibility: {hour.visibility.noaa}km</Params>

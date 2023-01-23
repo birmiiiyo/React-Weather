@@ -26,8 +26,8 @@ export const SelectTime: FC<ISelectTimeProps> = ({ hours, setActiveHours }) => {
           defaultValue={0}
           id="optionTime"
         >
-          {convertDateTimeToHours(hour.time)} -{' '}
-          {convertDateTimeToHours(hours[index + 1]?.time)}
+          {hour.time.toString().slice(11, 16)} -{' '}
+          {hours[index + 1]?.time.toString().slice(11, 16)}
         </Option>
       ))}
     </Select>
