@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import { getCurrentTimeFromAPI } from 'api/getCurrentTime'
+import { getCurrentTimeFromAPI } from 'Api/getCurrentTime'
 
 jest.mock('axios')
 

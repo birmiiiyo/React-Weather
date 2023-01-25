@@ -1,6 +1,6 @@
 import { call, put, select, takeEvery } from 'redux-saga/effects'
 
-import { getCurrentTimeFromAPI } from 'api/getCurrentTime'
+import { getCurrentTimeFromAPI } from 'Api/getCurrentTime'
 import { ITime } from 'interfaces/TimeZoneDB'
 import { setErrorAtTime } from 'store/actionCreators/ErrorActions'
 import { setCurrentTime } from 'store/actionCreators/TimeActions'

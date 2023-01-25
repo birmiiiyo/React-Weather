@@ -22,7 +22,7 @@
       "components/*": ["components/*"],
       "store/*": ["store/*"],
       "interfaces/*": ["interfaces/*"],
-      "api/*": ["api/*"],
+      "Api/*": ["Api/*"],
       "App/*": ["App/*"],
       "constants/*": ["constants/*"],
       "hooks/*": ["hooks/*"],

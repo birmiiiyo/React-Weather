@@ -1,7 +1,7 @@
 import { call, put, select, takeEvery } from 'redux-saga/effects'
 
-import { getDailyWeatherFromAPI } from 'api/getDailyWeather'
-import { getWeatherImagesAPI } from 'api/getImage'
+import { getDailyWeatherFromAPI } from 'Api/getDailyWeather'
+import { getWeatherImagesAPI } from 'Api/getImage'
 import { MockapiRequest } from 'interfaces/Mockapi'
 import { IOpenWeather } from 'interfaces/OpenWeather.weather'
 import {

@@ -1,7 +1,7 @@
 import { call, fork, join, put, select, takeLatest } from 'redux-saga/effects'
 
-import { getCurrentTimeFromAPI } from 'api/getCurrentTime'
-import { getHourlyWeatherFromAPI } from 'api/getHourlyWeather'
+import { getCurrentTimeFromAPI } from 'Api/getCurrentTime'
+import { getHourlyWeatherFromAPI } from 'Api/getHourlyWeather'
 import { IStormGlass } from 'interfaces/StormGlass'
 import { ITime } from 'interfaces/TimeZoneDB'
 import { setErrorAtHourlyWeather } from 'store/actionCreators/ErrorActions'
