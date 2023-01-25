@@ -1,12 +1,11 @@
 import React from 'react'
 
-import { useAppSelector } from '@hooks/useAppSelector'
+import { CalendarEvent } from 'components/Event'
+import { useAppSelector } from 'hooks/useAppSelector'
 
-import { weekDays } from '@constants/weekDays'
+import { InfoText, List } from './styles'
 
-import { Event, List, InfoText } from './styles'
-
-export const Calendar = () => {
+export function Calendar() {
   const { events, isLogin } = useAppSelector(state => state.calendar)
 
   return (
@@ -16,11 +15,8 @@ export const Calendar = () => {
       ) : events.length === 0 ? (
         <InfoText>No upcoming events</InfoText>
       ) : (
-        events.map(event => (
-          <Event key={event.start.dateTime} id="event">
-            {weekDays[new Date(event.start.dateTime).getDay()]}{' '}
-            {event.start.dateTime.slice(11, 16)}, {event.summary}
-          </Event>
+        events.map(({ start, summary }) => (
+          <CalendarEvent startTime={start.dateTime} summary={summary} />
         ))
       )}
     </List>

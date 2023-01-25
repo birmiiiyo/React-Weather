@@ -1,7 +1,7 @@
-import iconClear from '@assets/svg/iconClear.svg'
-import iconClouds from '@assets/svg/iconClouds.svg'
-import iconRain from '@assets/svg/iconRain.svg'
-import iconSnow from '@assets/svg/iconSnow.svg'
+import iconClear from 'assets/svg/icons/iconClear.svg'
+import iconClouds from 'assets/svg/icons/iconClouds.svg'
+import iconRain from 'assets/svg/icons/iconRain.svg'
+import iconSnow from 'assets/svg/icons/iconSnow.svg'
 
 export const getImage = (mode: string): string => {
   switch (mode) {

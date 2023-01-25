@@ -1,22 +1,19 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 
-import { useAppDispatch } from '@hooks/useAppDispatch'
-import { useDebounce } from '@hooks/useDebounce'
+import { Dropdown } from 'components/Dropdown'
+import { useAppDispatch } from 'hooks/useAppDispatch'
+import { useDebounce } from 'hooks/useDebounce'
+import { ILocation } from 'interfaces/OpenWeather.location'
+import { getDailyWeather } from 'store/actionCreators/DailyWeatherActions'
+import { getHourlyWeather } from 'store/actionCreators/HourlyWeatherActions'
+import { setLocation } from 'store/actionCreators/LocationActions'
+import { getCurrentTime } from 'store/actionCreators/TimeActions'
 
-import { Dropdown } from '@components/Dropdown'
-
-import { getDailyWeather } from '@store/actionCreators/DailyWeatherActions'
-import { setLocation } from '@store/actionCreators/LocationActions'
-import { getCurrentTime } from '@store/actionCreators/TimeActions'
-import { getHourlyWeather } from '@store/actionCreators/HourlyWeatherActions'
-
-import { ILocation } from '@interfaces/OpenWeather.location'
-
-import { Container, Input, Label } from './styles'
 import { noDigits } from './helpers'
+import { Container, Input, Label } from './styles'
 
-export const Search = () => {
+export function Search() {
   const dispatch = useAppDispatch()
   const [search, setSearch] = useState<string>('')
   const [data, setData] = useState<Array<ILocation>>([])
@@ -27,7 +24,7 @@ export const Search = () => {
     setDropdown(debounced.length > 2 && data?.length > 0)
     axios
       .get(
-        `${process.env.OPEN_WEATHER_CITY_PATH}?q=${debounced}&limit=10&appid=${process.env.OPEN_WEATHER_API_key}`
+        `${process.env.OPEN_WEATHER_CITY_PATH}?q=${debounced}&limit=10&appid=${process.env.OPEN_WEATHER_API_key}`,
       )
       .then(responce => setData(responce.data))
   }, [data?.length, debounced])

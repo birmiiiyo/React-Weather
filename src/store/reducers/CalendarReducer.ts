@@ -1,7 +1,6 @@
-import * as actions from '../actionCreators/CalendarActions'
-
-import type { InferValueTypes } from '@interfaces/ActionCreators'
-import { IEventItem } from '@interfaces/Calendar'
+import type { InferValueTypes } from 'interfaces/ActionCreators'
+import { IEventItem } from 'interfaces/Calendar'
+import * as actions from 'store/actionCreators/CalendarActions'
 
 type CalendarActionsTypes = ReturnType<InferValueTypes<typeof actions>>
 
@@ -17,7 +16,7 @@ const initialState: ICalendarState = {
 
 export const CalendarReducer = (
   state = initialState,
-  action: CalendarActionsTypes
+  action: CalendarActionsTypes,
 ): ICalendarState => {
   switch (action.type) {
     case 'SET_EVENTS':

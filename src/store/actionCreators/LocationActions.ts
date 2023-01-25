@@ -1,4 +1,4 @@
-import { ILocationState } from '@store/reducers/LocationReducer'
+import { ILocationState } from 'store/reducers/LocationReducer'
 
 export const setLocation = (newLocation: ILocationState) =>
   <const>{

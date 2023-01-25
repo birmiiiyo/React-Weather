@@ -1,9 +1,7 @@
 import axios from 'axios'
 
-import { IStormGlass } from 'interfaces/StormGlass'
-
 import { ONE_DAY } from 'constants/index'
-
+import { IStormGlass } from 'interfaces/StormGlass'
 import { getUNIXformat } from 'utils/getUNIXformat'
 
 interface HourlyAPIProps {
@@ -24,7 +22,7 @@ export const getHourlyWeatherFromAPI = async ({
       Authorization: `${process.env.STORM_GLASS_API_key}`,
     },
     params: {
-      lat: lat,
+      lat,
       lng: lon,
       params: 'airTemperature,pressure,currentSpeed,visibility,humidity',
       start: time,

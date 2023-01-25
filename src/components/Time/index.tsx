@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from 'react'
 
-import { weekDays } from '@constants/weekDays'
-import { months } from '@constants/months'
+import { months } from 'constants/months'
+import { weekDays } from 'constants/weekDays'
+import { convertDateTimeToHours } from 'utils/convertDateTimeToHours'
 
-import { convertDateTimeToHours } from '@utils/convertDateTimeToHours'
+import { DateInfo, Time, Wrapper } from './styles'
 
-import { Wrapper, DateInfo, Time } from './styles'
-
-export const Clock = () => {
+export function Clock() {
   const [time, setTime] = useState<Date>(() => new Date())
 
   useEffect(() => {
     const timeChange = setInterval(() => {
       const date = new Date()
-      date.getMinutes() !== time.getMinutes() && setTime(date)
+      if (date.getMinutes() !== time.getMinutes()) {
+        setTime(date)
+      }
     }, 1000)
 
     return () => clearInterval(timeChange)

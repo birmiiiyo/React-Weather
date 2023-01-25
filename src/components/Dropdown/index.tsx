@@ -1,15 +1,7 @@
 import React, { FC } from 'react'
 
-import { ILocation } from '@interfaces/OpenWeather.location'
-
 import { Item, List } from './styles'
-
-interface DropdownProps {
-  search: string
-  cities: Array<ILocation>
-  dropdown: boolean
-  clickHandler: (lat: number, lon: number) => void
-}
+import { DropdownProps } from './types'
 
 export const Dropdown: FC<DropdownProps> = ({
   search,

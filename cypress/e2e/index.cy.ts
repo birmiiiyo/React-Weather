@@ -73,12 +73,12 @@ describe('Tests for diff gadgets', () => {
         cy.get('.weather__Button-sc-zb2304-3').click()
         cy.get('#day > :nth-child(1) > :nth-child(2)').should(
           'have.text',
-          'day'
+          'day',
         )
         cy.get('.weather__Button-sc-zb2304-3').click()
         cy.get('#day > :nth-child(1) > :nth-child(2)').should(
           'have.text',
-          'night'
+          'night',
         )
       })
     })
@@ -107,7 +107,7 @@ function mockLocation(latitude: number, longitude: number) {
           }
 
           throw err({ code: 1 })
-        }
+        },
       )
     },
   }

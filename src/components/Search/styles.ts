@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { theme, CENTER, COLUMN } from '@styles/themes'
+import { COLUMN, theme } from 'styles/themes'
 
 export const Container = styled.div`
   ${COLUMN}

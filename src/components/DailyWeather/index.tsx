@@ -1,25 +1,25 @@
 import React, { useState } from 'react'
 
-import { getImage } from '@utils/getIcons'
-
 import { weekDays } from 'constants/weekDays'
-
-import { useAppSelector } from '@hooks/useAppSelector'
-
+import { useAppSelector } from 'hooks/useAppSelector'
 import {
-  Container,
-  List,
-  Value,
   Button,
-  Icon,
+  Container,
   Day,
+  Icon,
+  List,
   Params,
-} from '@styles/weather'
+  TimeOfDay,
+  Value,
+} from 'styles/weather'
+import { getImage } from 'utils/getIcons'
 
-export const DailyWeather = () => {
+export function DailyWeather() {
   const [time, setTime] = useState<'day' | 'night'>('day')
-  const { list } = useAppSelector(state => state.dailyWeather)
-  const { dailyWeatherError } = useAppSelector(state => state.error)
+  const list = useAppSelector(state => state.dailyWeather.list)
+  const dailyWeatherError = useAppSelector(
+    state => state.error.dailyWeatherError,
+  )
   const switchTime = () => {
     if (time === 'day') {
       setTime('night')
@@ -32,30 +32,32 @@ export const DailyWeather = () => {
       {dailyWeatherError || (
         <>
           {' '}
-          <div>
+          <TimeOfDay>
             Weather at: <Button onClick={switchTime}>{time}</Button>
-          </div>
+          </TimeOfDay>
           <List id="day">
-            {list?.map(day => (
-              <Value key={day.sunrise}>
-                <Day>
-                  {weekDays[new Date(day.dt * 1000).getDay()]}
-                  <Icon src={getImage(day.weather[0].main)} />
-                </Day>
-                <Params>
-                  {time}:{' '}
-                  {(day.temp[time] - 273).toFixed(1) === '-0.0'
-                    ? '0.0'
-                    : (day.temp[time] - 273).toFixed(1)}
-                  °C
-                </Params>
-                <Params>
-                  Feels like: {(day.feels_like[time] - 273).toFixed(1)}°C
-                </Params>
-                <Params>Overcast: {day.clouds}%</Params>
-                <Params>Wind speed: {day.speed}m/s</Params>
-              </Value>
-            ))}
+            {list?.map(
+              ({ dt, weather, temp, sunrise, feels_like, clouds, speed }) => (
+                <Value key={sunrise}>
+                  <Day>
+                    {weekDays[new Date(dt * 1000).getDay()]}
+                    <Icon src={getImage(weather[0].main)} />
+                  </Day>
+                  <Params>
+                    {time}:{' '}
+                    {(temp[time] - 273).toFixed(1) === '-0.0'
+                      ? '0.0'
+                      : (temp[time] - 273).toFixed(1)}
+                    °C
+                  </Params>
+                  <Params>
+                    Feels like: {(feels_like[time] - 273).toFixed(1)}°C
+                  </Params>
+                  <Params>Overcast: {clouds}%</Params>
+                  <Params>Wind speed: {speed}m/s</Params>
+                </Value>
+              ),
+            )}
           </List>
         </>
       )}

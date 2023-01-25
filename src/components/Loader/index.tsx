@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { Load } from './styles'
+import { CustomLoader } from './styles'
 
-export const Loader = () => {
-  return <Load>Loading...</Load>
+export function Loader() {
+  return <CustomLoader />
 }

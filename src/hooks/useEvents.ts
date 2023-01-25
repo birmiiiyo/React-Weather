@@ -1,15 +1,13 @@
 import ApiCalendar from 'react-google-calendar-api'
 
-import { useAppSelector } from '@hooks/useAppSelector'
-import { useAppDispatch } from '@hooks/useAppDispatch'
-
+import { useAppDispatch } from 'hooks/useAppDispatch'
+import { useAppSelector } from 'hooks/useAppSelector'
+import { IEventsListResponse } from 'interfaces/Calendar'
 import {
   setCalendarEvents,
   userLogin,
   userLogout,
-} from '@store/actionCreators/CalendarActions'
-
-import { IEventsListResponse } from '@interfaces/Calendar'
+} from 'store/actionCreators/CalendarActions'
 
 export const useEvents = () => {
   const dispatch = useAppDispatch()
@@ -22,7 +20,7 @@ export const useEvents = () => {
           ({ result }: IEventsListResponse) => {
             dispatch(userLogin())
             dispatch(setCalendarEvents(result.items))
-          }
+          },
         )
       })
     } else {

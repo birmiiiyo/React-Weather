@@ -1,6 +1,2 @@
-export const convertDateTimeToHours = (time: Date): string => {
-  return new Date(time).toLocaleTimeString('en', {
-    timeStyle: 'short',
-    hour12: false,
-  })
-}
+export const convertDateTimeToHours = (time: Date): string =>
+  new Date(time).toString().slice(16, 21)

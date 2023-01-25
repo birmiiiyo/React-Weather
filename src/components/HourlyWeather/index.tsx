@@ -1,19 +1,14 @@
 import React, { useState } from 'react'
 
-import { SelectTime } from '@components/Select'
-
-import { convertDateTimeToHours } from '@utils/convertDateTimeToHours'
-
-import { useAppSelector } from '@hooks/useAppSelector'
-
-import { Container, List, Value, Params } from '@styles/weather'
+import { SelectTime } from 'components/Select'
+import { useAppSelector } from 'hooks/useAppSelector'
+import { Container, List, Params, Value } from 'styles/weather'
 
 import { filterPerFourHour } from './helpers'
 
-export const HourlyWeather = () => {
-  const { hours } = useAppSelector(state => state.hourlyWeather)
+export function HourlyWeather() {
+  const hours = useAppSelector(state => state.hourlyWeather.hours)
   const [activeHours, setActiveHours] = useState(0)
-  console.log(hours)
 
   return (
     <Container id="hourlyWeather">

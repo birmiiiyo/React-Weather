@@ -8,7 +8,7 @@ const config: Config = {
     '@components/(.*)': '<rootDir>/src/components/$1',
     '@store/(.*)': '<rootDir>/src/store/$1',
     '@interfaces/(.*)': '<rootDir>/src/interfaces/$1',
-    '@API/(.*)': '<rootDir>/src/API/$1',
+    '@api/(.*)': '<rootDir>/src/api/$1',
     '@App/(.*)': '<rootDir>/src/App/$1',
     '@constants/(.*)': '<rootDir>/src/constants/$1',
     '@hooks/(.*)': '<rootDir>/src/hooks/$1',

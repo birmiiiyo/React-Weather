@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { theme, COLUMN } from '@styles/themes'
+import { COLUMN, theme } from 'styles/themes'
 
 export const Wrapper = styled.div`
   ${COLUMN}

@@ -50,4 +50,4 @@ const COLUMN = `
   flex-direction:column;
 `
 
-export { theme, CENTER, COLUMN, SPACE_BETWEEN }
+export { CENTER, COLUMN, SPACE_BETWEEN, theme }

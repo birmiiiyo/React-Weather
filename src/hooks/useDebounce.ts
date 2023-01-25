@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 export function useDebounce(value: string, delay = 300): string {
   const [debounced, setDebounced] = useState(value)

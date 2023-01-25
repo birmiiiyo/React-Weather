@@ -1,7 +1,7 @@
-import { devices } from '@styles/breakpoints'
 import styled from 'styled-components'
 
-import { theme } from '@styles/themes'
+import { devices } from 'styles/breakpoints'
+import { theme } from 'styles/themes'
 
 export const Background = styled.div`
   position: absolute;

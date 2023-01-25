@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 
-import { DailyWeather } from '@components/DailyWeather'
-import { HourlyWeather } from '@components/HourlyWeather'
+import { DailyWeather } from 'components/DailyWeather'
+import { HourlyWeather } from 'components/HourlyWeather'
 
 import { Button, Container } from './styles'
 
-export const Weather = () => {
+export function Weather() {
   const [activeWeather, setActiveWeather] = useState<'daily' | 'hourly'>(
-    'daily'
+    'daily',
   )
   const switchWeather = () => {
     if (activeWeather === 'daily') {

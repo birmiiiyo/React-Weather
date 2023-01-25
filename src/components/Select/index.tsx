@@ -1,15 +1,9 @@
-import React, { ChangeEvent, Dispatch, FC, SetStateAction } from 'react'
+import React, { ChangeEvent, FC } from 'react'
 
-import { convertDateTimeToHours } from '@utils/convertDateTimeToHours'
-
-import { Hour } from '@interfaces/StormGlass'
+import { convertDateTimeToHours } from 'utils/convertDateTimeToHours'
 
 import { Option, Select } from './styles'
-
-interface ISelectTimeProps {
-  hours: Hour[]
-  setActiveHours: Dispatch<SetStateAction<number>>
-}
+import { ISelectTimeProps } from './types'
 
 export const SelectTime: FC<ISelectTimeProps> = ({ hours, setActiveHours }) => {
   const handleSubmit = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -19,15 +13,15 @@ export const SelectTime: FC<ISelectTimeProps> = ({ hours, setActiveHours }) => {
 
   return (
     <Select onChange={handleSubmit} id="selectTime">
-      {hours?.slice(0, hours.length - 1)?.map((hour, index) => (
+      {hours?.slice(0, hours.length - 1)?.map(({ time }, index) => (
         <Option
-          key={hour?.time.toString()}
+          key={time.toString()}
           value={index}
           defaultValue={0}
           id="optionTime"
         >
-          {hour.time.toString().slice(11, 16)} -{' '}
-          {hours[index + 1]?.time.toString().slice(11, 16)}
+          {convertDateTimeToHours(time)} -{' '}
+          {convertDateTimeToHours(hours[index + 1]?.time)}
         </Option>
       ))}
     </Select>

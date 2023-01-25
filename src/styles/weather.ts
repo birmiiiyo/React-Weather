@@ -1,6 +1,6 @@
-import { devices } from './breakpoints'
 import styled from 'styled-components'
 
+import { devices } from './breakpoints'
 import { COLUMN, SPACE_BETWEEN, theme } from './themes'
 
 export const Container = styled.div`
@@ -49,8 +49,13 @@ export const Day = styled.div`
   font-size: ${theme.FONT_SIZE.L}px;
   color: ${theme.colors.dark};
 `
+
 export const Params = styled.div`
   color: ${theme.colors.dark};
   font-size: ${theme.FONT_SIZE.S}px;
   font-weight: ${theme.FONT_WEIGHT.M};
+`
+
+export const TimeOfDay = styled.div`
+  font-style: italic;
 `

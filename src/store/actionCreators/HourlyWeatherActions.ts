@@ -1,4 +1,4 @@
-import { IHourlyWeatherState } from '@store/reducers/HourlyWeatherReducer'
+import { IHourlyWeatherState } from 'store/reducers/HourlyWeatherReducer'
 
 export const getHourlyWeather = () =>
   <const>{

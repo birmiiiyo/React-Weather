@@ -1,6 +1,5 @@
-import type { InferValueTypes } from '@interfaces/ActionCreators'
-
-import * as actions from '../actionCreators/TimeActions'
+import type { InferValueTypes } from 'interfaces/ActionCreators'
+import * as actions from 'store/actionCreators/TimeActions'
 
 type TimeActionsTypes = ReturnType<InferValueTypes<typeof actions>>
 
@@ -22,7 +21,7 @@ const initialState: ITimeState = {
 
 export const TimeReducer = (
   state = initialState,
-  action: TimeActionsTypes
+  action: TimeActionsTypes,
 ): ITimeState => {
   switch (action.type) {
     case 'SET_CURRENT_TIME':

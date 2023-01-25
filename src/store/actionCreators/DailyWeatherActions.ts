@@ -1,4 +1,4 @@
-import { City, List } from '@interfaces/OpenWeather.weather'
+import { City, List } from 'interfaces/OpenWeather.weather'
 
 export const getDailyWeather = () =>
   <const>{

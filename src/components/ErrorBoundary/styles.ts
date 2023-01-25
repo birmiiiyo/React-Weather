@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { CENTER, theme } from '@styles/themes'
+import { CENTER, theme } from 'styles/themes'
 
 export const ErrorContainer = styled.div`
   width: 100vw;

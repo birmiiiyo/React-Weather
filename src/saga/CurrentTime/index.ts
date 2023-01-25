@@ -1,13 +1,10 @@
-import { select, takeEvery, put, call } from 'redux-saga/effects'
+import { call, put, select, takeEvery } from 'redux-saga/effects'
 
-import { getCurrentTimeFromAPI } from '@API/getCurrentTime'
-
-import { RootState } from '@store/index'
-
-import { ITime } from '@interfaces/TimeZoneDB'
-
-import { setCurrentTime } from '@store/actionCreators/TimeActions'
-import { setErrorAtTime } from '@store/actionCreators/ErrorActions'
+import { getCurrentTimeFromAPI } from 'api/getCurrentTime'
+import { ITime } from 'interfaces/TimeZoneDB'
+import { setErrorAtTime } from 'store/actionCreators/ErrorActions'
+import { setCurrentTime } from 'store/actionCreators/TimeActions'
+import { RootState } from 'store/index'
 
 export function* workerCurrentTime() {
   try {
@@ -20,10 +17,10 @@ export function* workerCurrentTime() {
         time: data.formatted,
         zoneName: data.zoneName,
         gmtOffset: data.gmtOffset * 1000,
-      })
+      }),
     )
   } catch ({ message }) {
-    yield put(setErrorAtTime('Ошибка при запросе данных о времени' + message))
+    yield put(setErrorAtTime(`${message}`))
   }
 }
 

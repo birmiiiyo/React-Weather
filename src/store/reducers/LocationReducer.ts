@@ -1,6 +1,5 @@
-import * as actions from '../actionCreators/LocationActions'
-
-import type { InferValueTypes } from '@interfaces/ActionCreators'
+import type { InferValueTypes } from 'interfaces/ActionCreators'
+import * as actions from 'store/actionCreators/LocationActions'
 
 type LocationActionsTypes = ReturnType<InferValueTypes<typeof actions>>
 
@@ -16,7 +15,7 @@ const initialState: ILocationState = {
 
 export const LocationReducer = (
   state = initialState,
-  action: LocationActionsTypes
+  action: LocationActionsTypes,
 ): ILocationState => {
   switch (action.type) {
     case 'SET_LOCATION':

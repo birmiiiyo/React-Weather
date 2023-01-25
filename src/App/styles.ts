@@ -1,7 +1,9 @@
 import styled from 'styled-components'
-import { CENTER, theme, COLUMN } from '@styles/themes'
+
+import { devices } from 'styles/breakpoints'
+import { CENTER, COLUMN, theme } from 'styles/themes'
+
 import { IContainerProps } from './types'
-import { devices } from '@styles/breakpoints'
 
 export const Center = styled.div`
   ${CENTER}

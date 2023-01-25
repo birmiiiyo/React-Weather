@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux'
 
-import { LocationReducer } from './LocationReducer'
+import { CalendarReducer } from './CalendarReducer'
 import { DailyWeatherReducer } from './DailyWeaherReducer'
-import { TimeReducer } from './TimeReducer'
 import { ErrorReducer } from './ErrorReducer'
 import { HourlyWeatherReducer } from './HourlyWeatherReducer'
-import { CalendarReducer } from './CalendarReducer'
+import { LocationReducer } from './LocationReducer'
+import { TimeReducer } from './TimeReducer'
 
 export const rootReducer = combineReducers({
   location: LocationReducer,

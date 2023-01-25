@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { useEvents } from '@hooks/useEvents'
+import { useEvents } from 'hooks/useEvents'
 
 import { Background, LoginButton } from './styles'
 
-export const Login = () => {
+export function Login() {
   const [isLogin, setLogin] = useEvents()
   return (
     <Background>

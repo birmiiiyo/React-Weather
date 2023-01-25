@@ -1,25 +1,23 @@
 import React, { useEffect } from 'react'
 
-import { Weather } from '@components/Weather'
-import { Information } from '@components/Information'
-import { Login } from '@components/Login'
-import { Calendar } from '@components/Calendar'
-import { ErrorBoundary } from '@components/ErrorBoundary'
-
-import { useAppDispatch } from '@hooks/useAppDispatch'
-import { useAppSelector } from '@hooks/useAppSelector'
-
-import { setLocation } from '@store/actionCreators/LocationActions'
-import { getDailyWeather } from '@store/actionCreators/DailyWeatherActions'
-import { getCurrentTime } from '@store/actionCreators/TimeActions'
-import { getHourlyWeather } from '@store/actionCreators/HourlyWeatherActions'
+import { Calendar } from 'components/Calendar'
+import { ErrorBoundary } from 'components/ErrorBoundary'
+import { Information } from 'components/Information'
+import { Login } from 'components/Login'
+import { Weather } from 'components/Weather'
+import { useAppDispatch } from 'hooks/useAppDispatch'
+import { useAppSelector } from 'hooks/useAppSelector'
+import { getDailyWeather } from 'store/actionCreators/DailyWeatherActions'
+import { setErrorAtLocation } from 'store/actionCreators/ErrorActions'
+// import { getHourlyWeather } from 'store/actionCreators/HourlyWeatherActions' // всё нормально я обьяснял
+import { setLocation } from 'store/actionCreators/LocationActions'
+import { getCurrentTime } from 'store/actionCreators/TimeActions'
 
 import { Background, Container } from './styles'
-import { setErrorAtLocation } from '@store/actionCreators/ErrorActions'
 
-const App = () => {
+function App() {
   const dispatch = useAppDispatch()
-  const { img } = useAppSelector(state => state.dailyWeather)
+  const img = useAppSelector(state => state.dailyWeather.img)
 
   useEffect(() => {
     try {
@@ -29,20 +27,18 @@ const App = () => {
           dispatch(setLocation({ lat: coords.latitude, lon: coords.longitude }))
           dispatch(getDailyWeather())
           dispatch(getCurrentTime())
-          //dispatch(getHourlyWeather())
+          // dispatch(getHourlyWeather())
         },
         error => {
           if (error.PERMISSION_DENIED) {
             dispatch(getDailyWeather())
             dispatch(getCurrentTime())
-            //dispatch(getHourlyWeather())
+            // dispatch(getHourlyWeather())
           }
-        }
+        },
       )
     } catch ({ message }) {
-      dispatch(
-        setErrorAtLocation('Ошибка при получении местоположения ' + message)
-      )
+      dispatch(setErrorAtLocation(`${message}`))
     }
   }, [dispatch])
 

@@ -19,18 +19,18 @@
     "jsx": "react",
     "baseUrl": "./src",
     "paths": {
-      "@components/*": ["components/*"],
-      "@store/*": ["store/*"],
-      "@interfaces/*": ["interfaces/*"],
-      "@API/*": ["API/*"],
-      "@App/*": ["App/*"],
-      "@constants/*": ["constants/*"],
-      "@hooks/*": ["hooks/*"],
-      "@saga/*": ["saga/*"],
-      "@styles/*": ["styles/*"],
-      "@utils/*": ["utils/*"],
-      "@assets/*": ["assets/*"],
-      "@tests": ["tests/index.tsx"]
+      "components/*": ["components/*"],
+      "store/*": ["store/*"],
+      "interfaces/*": ["interfaces/*"],
+      "api/*": ["api/*"],
+      "App/*": ["App/*"],
+      "constants/*": ["constants/*"],
+      "hooks/*": ["hooks/*"],
+      "saga/*": ["saga/*"],
+      "styles/*": ["styles/*"],
+      "utils/*": ["utils/*"],
+      "assets/*": ["assets/*"],
+      "tests": ["tests/index.tsx"]
     }
   },
   "include": ["src", "src/react-app-env.d.ts", "src/index.d.ts"]

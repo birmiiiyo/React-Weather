@@ -1,6 +1,9 @@
-import React from 'react'
 import '@testing-library/jest-dom'
-import { render, screen } from '@tests'
+
+import React from 'react'
+
+import { render, screen } from 'tests'
+
 import { Calendar } from './index'
 
 describe('Calendar without localStorage', () => {

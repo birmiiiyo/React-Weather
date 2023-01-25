@@ -1,4 +1,4 @@
-import { IEventItem } from '@interfaces/Calendar'
+import { IEventItem } from 'interfaces/Calendar'
 
 export const getCalendarEvents = () =>
   <const>{

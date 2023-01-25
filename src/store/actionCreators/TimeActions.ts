@@ -1,4 +1,4 @@
-import { ITimeState } from '@store/reducers/TimeReducer'
+import { ITimeState } from 'store/reducers/TimeReducer'
 
 export const getCurrentTime = () =>
   <const>{

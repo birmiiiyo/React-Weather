@@ -10,5 +10,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-      - run: yarn install --frozen-lockfile --check-files --silent
-      - run: yarn lint
+      - run: npm ci
+      - run: npm run lint
+      - run: npm run test
+      - run: npm run prettier

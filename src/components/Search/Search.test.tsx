@@ -1,6 +1,9 @@
-import React from 'react'
 import '@testing-library/jest-dom'
-import { render, screen, fireEvent } from '@tests'
+
+import React from 'react'
+
+import { fireEvent, render } from 'tests'
+
 import { Search } from './index'
 
 describe('Search component', () => {

@@ -1,6 +1,5 @@
-import { InferValueTypes } from '@interfaces/ActionCreators'
-
-import * as actions from '../actionCreators/ErrorActions'
+import { InferValueTypes } from 'interfaces/ActionCreators'
+import * as actions from 'store/actionCreators/ErrorActions'
 
 type ErrorActionsTypes = ReturnType<InferValueTypes<typeof actions>>
 
@@ -20,7 +19,7 @@ const initialState: IErrorState = {
 
 export const ErrorReducer = (
   state = initialState,
-  action: ErrorActionsTypes
+  action: ErrorActionsTypes,
 ): IErrorState => {
   switch (action.type) {
     case 'DAILY_WEATHER_ERROR':

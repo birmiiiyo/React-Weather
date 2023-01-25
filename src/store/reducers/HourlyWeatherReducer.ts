@@ -1,7 +1,6 @@
-import type { InferValueTypes } from '@interfaces/ActionCreators'
-import { Hour } from '@interfaces/StormGlass'
-
-import * as actions from '../actionCreators/HourlyWeatherActions'
+import type { InferValueTypes } from 'interfaces/ActionCreators'
+import { Hour } from 'interfaces/StormGlass'
+import * as actions from 'store/actionCreators/HourlyWeatherActions'
 
 type HourlyWeatherActionsTypes = ReturnType<InferValueTypes<typeof actions>>
 
@@ -14,7 +13,7 @@ const initialState: IHourlyWeatherState = {
 
 export const HourlyWeatherReducer = (
   state = initialState,
-  action: HourlyWeatherActionsTypes
+  action: HourlyWeatherActionsTypes,
 ): IHourlyWeatherState => {
   switch (action.type) {
     case 'SET_HOURLY_WEATHER':

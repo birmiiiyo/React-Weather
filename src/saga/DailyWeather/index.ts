@@ -1,19 +1,16 @@
-import { RootState } from '@store/index'
-import { select, takeEvery, put, call } from 'redux-saga/effects'
+import { call, put, select, takeEvery } from 'redux-saga/effects'
 
-import { getDailyWeatherFromAPI } from '@API/getDailyWeather'
-import { getWeatherImagesAPI } from '@API/getImage'
-
+import { getDailyWeatherFromAPI } from 'api/getDailyWeather'
+import { getWeatherImagesAPI } from 'api/getImage'
+import { MockapiRequest } from 'interfaces/Mockapi'
+import { IOpenWeather } from 'interfaces/OpenWeather.weather'
 import {
   setDailyWeather,
   setWeatherImg,
-} from '@store/actionCreators/DailyWeatherActions'
-import { setErrorAtDailyWeather } from '@store/actionCreators/ErrorActions'
-
-import { IOpenWeather } from '@interfaces/OpenWeather.weather'
-import { MockapiRequest } from '@interfaces/Mockapi'
-
-import { randomInteger } from '@utils/randomInt'
+} from 'store/actionCreators/DailyWeatherActions'
+import { setErrorAtDailyWeather } from 'store/actionCreators/ErrorActions'
+import { RootState } from 'store/index'
+import { randomInteger } from 'utils/randomInt'
 
 export function* workerDailyWeather() {
   try {
@@ -22,14 +19,12 @@ export function* workerDailyWeather() {
     yield put(setDailyWeather({ city: data.city, list: data.list }))
     const image: MockapiRequest[] = yield call(
       getWeatherImagesAPI,
-      data.list[0].weather[0].main
+      data.list[0].weather[0].main,
     )
     yield put(setWeatherImg(image[randomInteger()].src))
     yield put(setErrorAtDailyWeather(''))
   } catch ({ message }) {
-    yield put(
-      setErrorAtDailyWeather('Ошибка при запросе погоды по дням' + message)
-    )
+    yield put(setErrorAtDailyWeather(`${message}`))
   }
 }
 

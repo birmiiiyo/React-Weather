@@ -1,15 +1,7 @@
-import React, { Component, ErrorInfo, ReactNode } from 'react'
+import React, { Component } from 'react'
 
 import { ErrorContainer, ErrorTitle } from './styles'
-
-interface ErrorProps {
-  children: ReactNode
-}
-
-interface ErrorState {
-  hasError: boolean
-  error?: null | string
-}
+import { ErrorProps, ErrorState } from './types'
 
 export class ErrorBoundary extends Component<ErrorProps, ErrorState> {
   constructor(props: ErrorProps) {
@@ -24,20 +16,21 @@ export class ErrorBoundary extends Component<ErrorProps, ErrorState> {
     return { hasError: true }
   }
 
-  public componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+  public componentDidCatch(error: Error) {
     this.setState({ error: error.toString() })
-    console.error(errorInfo.componentStack)
   }
 
   public render() {
-    if (this.state.hasError) {
+    const { hasError, error } = this.state
+    const { children } = this.props
+    if (hasError) {
       return (
         <ErrorContainer>
-          <ErrorTitle>{this.state.error}</ErrorTitle>
+          <ErrorTitle>{error}</ErrorTitle>
         </ErrorContainer>
       )
     }
 
-    return this.props.children
+    return children
   }
 }

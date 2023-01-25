@@ -1,15 +1,12 @@
-import { select, put, call, takeLatest, join, fork } from 'redux-saga/effects'
+import { call, fork, join, put, select, takeLatest } from 'redux-saga/effects'
 
-import { setErrorAtHourlyWeather } from '@store/actionCreators/ErrorActions'
-import { setHourlyWeather } from '@store/actionCreators/HourlyWeatherActions'
-
-import { RootState } from '@store/index'
-
-import { IStormGlass } from '@interfaces/StormGlass'
-
-import { getHourlyWeatherFromAPI } from '@API/getHourlyWeather'
-import { getCurrentTimeFromAPI } from '@API/getCurrentTime'
-import { ITime } from '@interfaces/TimeZoneDB'
+import { getCurrentTimeFromAPI } from 'api/getCurrentTime'
+import { getHourlyWeatherFromAPI } from 'api/getHourlyWeather'
+import { IStormGlass } from 'interfaces/StormGlass'
+import { ITime } from 'interfaces/TimeZoneDB'
+import { setErrorAtHourlyWeather } from 'store/actionCreators/ErrorActions'
+import { setHourlyWeather } from 'store/actionCreators/HourlyWeatherActions'
+import { RootState } from 'store/index'
 
 function* getTime() {
   const { lat, lon } = yield select((state: RootState) => state.location)
@@ -30,9 +27,7 @@ export function* workerHourlyWeather() {
 
     yield put(setHourlyWeather({ hours: data.hours }))
   } catch ({ message }) {
-    yield put(
-      setErrorAtHourlyWeather('Ошибка при запросе погоды по часам' + message)
-    )
+    yield put(setErrorAtHourlyWeather(`${message}`))
   }
 }
 

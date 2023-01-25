@@ -1,13 +1,13 @@
-import React, { FC, ReactElement } from 'react'
-import { render, RenderOptions } from '@testing-library/react'
-import { Provider } from 'react-redux'
-import { composeWithDevTools } from 'redux-devtools-extension'
-
-import { rootReducer } from '@store/reducers/index'
-import { legacy_createStore as createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from '@redux-saga/core'
-import storage from 'redux-persist/lib/storage'
+import { RenderOptions, render } from '@testing-library/react'
+import React, { FC, ReactElement } from 'react'
+import { Provider } from 'react-redux'
+import { applyMiddleware, legacy_createStore as createStore } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
 import { persistReducer } from 'redux-persist'
+import storage from 'redux-persist/lib/storage'
+
+import { rootReducer } from 'store/reducers'
 
 const AllTheProviders: FC<{ children: React.ReactNode }> = ({ children }) => {
   const persistConfig = {
@@ -21,17 +21,15 @@ const AllTheProviders: FC<{ children: React.ReactNode }> = ({ children }) => {
 
   const store = createStore(
     persistedReducer,
-    composeWithDevTools(applyMiddleware(sagaMiddleWare))
+    composeWithDevTools(applyMiddleware(sagaMiddleWare)),
   )
   return <Provider store={store}>{children}</Provider>
 }
 
 const customRender = (
   ui: ReactElement,
-  options?: Omit<RenderOptions, 'wrapper'>
-) => {
-  return render(ui, { wrapper: AllTheProviders, ...options })
-}
+  options?: Omit<RenderOptions, 'wrapper'>,
+) => render(ui, { wrapper: AllTheProviders, ...options })
 
 export * from '@testing-library/react'
 export { customRender as render }
